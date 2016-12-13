@@ -1753,6 +1753,7 @@
 	</command>
 
 	<command name="ViewBlogsEntryWithUploadedCoverImage" priority="3">
+		<property name="portal.acceptance" value="blog" />
 		<execute macro="Navigator#gotoPage">
 			<var name="pageName" value="Blogs Page" />
 		</execute>
