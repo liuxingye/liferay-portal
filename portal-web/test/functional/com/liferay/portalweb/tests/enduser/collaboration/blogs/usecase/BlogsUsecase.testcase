@@ -1986,6 +1986,7 @@
 	</command>
 
 	<command name="ViewBlogsEntryWithUploadedCoverImage" priority="4">
+		<property name="portal.acceptance" value="blog" />
 		<execute macro="Navigator#openURL" />
 
 		<execute macro="ProductMenu#gotoSitesContent">
@@ -1999,6 +2000,8 @@
 			<var name="navTab" value="Upload Image" />
 			<var name="uploadFileName" value="Document_1.jpg" />
 		</execute>
+
+		<execute function="Pause" locator1="5000" />
 
 		<execute macro="PortletEntry#publish" />
 
