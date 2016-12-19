@@ -1986,6 +1986,7 @@
 	</command>
 
 	<command name="ViewBlogsEntryWithUploadedCoverImage" priority="4">
+		<property name="portal.acceptance" value="blog" />
 		<execute macro="Navigator#openURL" />
 
 		<execute macro="ProductMenu#gotoSitesContent">
@@ -2003,6 +2004,8 @@
 		<execute function="AssertVisible" locator1="BlogsEntry#ENTRY_COVER_IMAGE_UNPUBLISHED">
 			<var name="key_uploadFileName" value="Document_1" />
 		</execute>
+
+		<execute function="Pause" locator1="5000" />
 
 		<execute macro="PortletEntry#publish" />
 
