@@ -762,6 +762,7 @@
 	</command>
 
 	<command name="UpdateDocumentTypeWithPermissions" priority="3">
+		<property name="portal.acceptance" value="beck" />
 		<execute macro="TestCase#getSiteName">
 			<return from="siteName" name="siteName" />
 			<var name="siteName" value="${siteName}" />
