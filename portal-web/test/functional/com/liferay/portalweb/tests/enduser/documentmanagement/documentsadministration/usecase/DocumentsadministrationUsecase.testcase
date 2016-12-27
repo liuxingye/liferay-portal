@@ -762,6 +762,7 @@
 	</command>
 
 	<command name="UpdateDocumentTypeWithPermissions" priority="3">
+		<property name="portal.acceptance" value="beck" />
 		<execute macro="TestCase#getSiteName">
 			<return from="siteName" name="siteName" />
 			<var name="siteName" value="${siteName}" />
@@ -959,6 +960,8 @@
 		<execute macro="ProductMenu#gotoSitesContent">
 			<var name="portlet" value="Documents and Media" />
 		</execute>
+
+		<execute function="AssertVisible" locator1="ControlMenu#HEADER_TITLE" value1="Documents and Media" />
 
 		<execute macro="DMNavigator#gotoDocumentType" />
 
