@@ -683,6 +683,7 @@
 	</command>
 
 	<command name="OrganizationAdministratorActivate" priority="3">
+		<property name="portal.acceptance" value="beck" />
 		<execute macro="ProductMenu#gotoControlPanelUsers">
 			<var name="portlet" value="Roles" />
 		</execute>
