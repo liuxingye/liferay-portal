@@ -1316,6 +1316,7 @@
 	</command>
 
 	<command name="RolesSitesPermissionsInheritance" priority="4">
+		<property name="portal.acceptance" value="beck" />
 		<execute macro="ProductMenu#gotoControlPanelUsers">
 			<var name="portlet" value="Users and Organizations" />
 		</execute>
