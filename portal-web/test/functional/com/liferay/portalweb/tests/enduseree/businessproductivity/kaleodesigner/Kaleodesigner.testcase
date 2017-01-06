@@ -160,6 +160,7 @@
 	</command>
 
 	<command name="AddJoinXORWorkflowDefinitionViaViewTab" priority="3">
+		<property name="portal.acceptance" value="beck" />
 		<execute macro="ProductMenu#gotoControlPanelConfiguration">
 			<var name="portlet" value="Kaleo Designer" />
 		</execute>
