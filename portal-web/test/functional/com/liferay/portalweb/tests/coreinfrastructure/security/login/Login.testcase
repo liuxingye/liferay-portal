@@ -171,6 +171,8 @@
 	</command>
 
 	<command name="OpenIDSmoke" priority="4">
+		<property name="portal.acceptance" value="yvonne" />
+
 		<var method="TestPropsUtil#get('openid.password')" name="openIDPassword" />
 		<var method="TestPropsUtil#get('openid.username')" name="openIDUsername" />
 
