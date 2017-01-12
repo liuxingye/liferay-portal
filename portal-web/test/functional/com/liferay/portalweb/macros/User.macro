@@ -1949,7 +1949,7 @@
 				<execute macro="Button#clickSave" />
 			</then>
 		</if>
-		
+
 		<execute function="AssertElementPresent" locator1="UserBar#USER_AVATAR_IMAGE" />
 	</command>
 
