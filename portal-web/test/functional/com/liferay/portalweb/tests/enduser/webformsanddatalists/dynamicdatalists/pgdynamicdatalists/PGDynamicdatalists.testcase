@@ -1823,6 +1823,7 @@
 	</command>
 
 	<command name="ViewListRecordWithUploadedFreeMarkerDisplayTemplate" priority="5">
+		<property name="portal.acceptance" value="beck" />
 		<property name="custom.properties" value="freemarker.engine.restricted.variables=${line.separator}restricted.variables=" />
 		<property name="portal.acceptance" value="quarantine" />
 
@@ -1937,6 +1938,7 @@
 	</command>
 
 	<command name="ViewListRecordWithUploadedVelocityDisplayTemplate" priority="3">
+		<property name="portal.acceptance" value="beck" />
 		<property name="custom.properties" value="freemarker.engine.restricted.variables=${line.separator}restricted.variables=" />
 
 		<execute macro="Navigator#openURL" />
@@ -2045,6 +2047,7 @@
 	</command>
 
 	<command name="ViewListRecordWithVelocityDisplayTemplate" priority="4">
+		<property name="portal.acceptance" value="beck" />
 		<property name="custom.properties" value="freemarker.engine.restricted.variables=${line.separator}restricted.variables=" />
 
 		<var name="ddlDisplayTemplateScript">

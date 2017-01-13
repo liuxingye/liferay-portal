@@ -36,6 +36,7 @@
 	</tear-down>
 
 	<command name="AddDisplayTemplateFreeMarker" priority="4">
+		<property name="portal.acceptance" value="beck" />
 		<execute macro="Navigator#openURL" />
 
 		<execute macro="ProductMenu#gotoSitesContent">
@@ -69,6 +70,7 @@
 	</command>
 
 	<command name="AddDisplayTemplateVelocity" priority="5">
+		<property name="portal.acceptance" value="beck" />
 		<execute macro="Navigator#openURL" />
 
 		<execute macro="ProductMenu#gotoSitesContent">
@@ -2482,6 +2484,7 @@
 	</command>
 
 	<command name="DeleteDisplayTemplateVelocity" priority="4">
+		<property name="portal.acceptance" value="beck" />
 		<execute macro="Navigator#openURL" />
 
 		<execute macro="ProductMenu#gotoSitesContent">
@@ -4352,6 +4355,7 @@
 	</command>
 
 	<command name="ViewNoDuplicatesInOriginalAfterCopy" priority="3">
+		<property name="portal.acceptance" value="beck" />
 		<execute macro="Navigator#openURL" />
 
 		<execute macro="ProductMenu#gotoSitesContent">
