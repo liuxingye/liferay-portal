@@ -73,6 +73,8 @@
 
 		<execute function="SelectFrameTop" />
 
+		<execute function="ScrollBy" value1="0, 400" />
+
 		<execute macro="PortletEntry#save" />
 	</command>
 
