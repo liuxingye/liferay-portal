@@ -1452,6 +1452,7 @@
 	</command>
 
 	<command name="ViewBlogsEntryViewCount" priority="3">
+		<property name="portal.acceptance" value="beck" />
 		<execute macro="Portlet#gotoPortletOptions">
 			<var name="portletName" value="Blogs" />
 			<var name="portletOption" value="Configuration" />
