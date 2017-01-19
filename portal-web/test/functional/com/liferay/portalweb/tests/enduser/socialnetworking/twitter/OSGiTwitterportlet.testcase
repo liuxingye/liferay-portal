@@ -33,6 +33,7 @@
 	</command>
 
 	<command name="ViewEntry" priority="5">
+		<property name="portal.acceptance" value="beck" />
 		<execute macro="UserBar#gotoProfile" />
 
 		<execute macro="Portlet#addPG">
