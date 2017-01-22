@@ -33,7 +33,7 @@
 
 		<execute function="Click" locator1="Button#PLUS" />
 
-		<execute function="Click" locator1="DDMEditStructure#NAME_FIELD" />
+		<execute function="DoubleClick" locator1="DDMEditStructure#NAME_FIELD" />
 
 		<execute function="Type" locator1="DDMEditStructure#NAME_FIELD" value1="${kfFormName}" />
 
