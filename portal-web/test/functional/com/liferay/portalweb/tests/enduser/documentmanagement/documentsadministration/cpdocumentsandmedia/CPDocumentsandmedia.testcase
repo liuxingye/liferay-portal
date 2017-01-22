@@ -280,6 +280,7 @@
 	</command>
 
 	<command name="RotateImageViaDMSiteAdmin" priority="4">
+		<property name="portal.acceptance" value="beck" />
 		<execute macro="Navigator#openURL" />
 
 		<execute macro="ProductMenu#gotoSitesContent">
@@ -297,6 +298,8 @@
 		<execute macro="ProductMenu#gotoSitesContent">
 			<var name="portlet" value="Documents and Media" />
 		</execute>
+
+		<execute function="AssertVisible" locator1="ControlMenu#HEADER_TITLE" value1="Documents and Media" />
 
 		<execute macro="ImageEditor#gotoImageEditorViaDM">
 			<var name="dmDocumentTitle" value="Document_2.jpg" />
