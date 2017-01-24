@@ -946,7 +946,7 @@
 			<var name="webContentContent" value="WC WebContent Content" />
 		</execute>
 
-		<execute macro="WebContentNavigator#gotoEditPGViaWCD" />
+		<!-- <execute macro="WebContentNavigator#gotoEditPGViaWCD" /> -->
 
 		<execute macro="WebContent#addTranslation">
 			<var name="localizedContent" value="世界您好 Content" />
