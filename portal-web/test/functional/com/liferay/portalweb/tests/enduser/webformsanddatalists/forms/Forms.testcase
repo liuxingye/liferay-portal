@@ -1024,6 +1024,7 @@
 	</command>
 
 	<command name="EditAllFormFieldsTypesUsedBySystemSettings" priority="4">
+		<property name="portal.acceptance" value="beck" />
 		<description message="This is a use case for LPS-50757." />
 		<property name="test.name.skip.portal.instance" value="Forms#EditAllFormFieldsTypesUsedBySystemSettings" />
 
