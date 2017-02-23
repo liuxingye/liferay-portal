@@ -188,4 +188,11 @@
 		<execute function="AssertValue" locator1="UsersAndOrganizationsEditUser#DETAILS_SCREEN_NAME_FIELD" value1="test1" />
 		<execute function="AssertValue" locator1="UsersAndOrganizationsEditUser#DETAILS_BIRTHDAY_FIELD" value1="11/24/1984" />
 	</command>
+
+	<command name="SignInPortalWithSessionEnabled" priority="5">
+		<description message="This is a use case for LPS-48653." />
+		<property name="custom.properties" value="session.enable.url.with.session.id=true" />
+
+	<execute function="AssertElementPresent" locator1="ControlMenu#USER_NAME" value1="Test" />
+    </command>
 </definition>
