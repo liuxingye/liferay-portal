@@ -160,6 +160,14 @@
 		<execute macro="User#loginPG" />
 	</command>
 
+	<command name="LoginPortalWithSessionEnabled" priority="5">
+		<description message="This is a use case for LPS-48653." />
+ +		<property name="custom.properties" value="session.enable.url.with.session.id=true" />
+
+		<execute macro="User#firstLoginPG" />
+		<execute function="AssertElementPresent" locator1="UserBar#USER_AVATAR_IMAGE" />
+	</command>
+
 	<command name="LoginFirstTime" priority="4">
 		<execute macro="SignIn#signIn" />
 
