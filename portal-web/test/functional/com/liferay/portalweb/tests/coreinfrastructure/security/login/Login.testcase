@@ -165,7 +165,10 @@
  +		<property name="custom.properties" value="session.enable.url.with.session.id=true" />
 
 		<execute macro="User#firstLoginPG" />
-		<execute function="AssertElementPresent" locator1="UserBar#USER_AVATAR_IMAGE" />
+		
+		<execute macro="User#logoutPG" />
+
+		<execute macro="User#loginPG" />
 	</command>
 
 	<command name="LoginFirstTime" priority="4">
