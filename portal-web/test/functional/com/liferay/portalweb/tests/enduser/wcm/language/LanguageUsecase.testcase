@@ -249,6 +249,7 @@
 	</command>
 
 	<command name="MoveCurrentLanguagesToAvailable" priority="4">
+		<property name="portal.acceptance" value="Lori" />
 		<property name="test.name.skip.portal.instance" value="LanguageUsecase#MoveCurrentLanguagesToAvailable" />
 		<property name="testray.component.names" value="Localization" />
 
@@ -282,15 +283,18 @@
 		</execute>
 
 		<execute macro="LanguagePortlet#viewLanguageCurrent">
-			<var name="locale" value="en-us" />
+			<var name="language" value="en-us" />
+			<var name="portletName" value="LanguagePortlet" />
 		</execute>
 
 		<execute macro="LanguagePortlet#viewLanguagesAbsent">
 			<var name="missingLocales" value="fr-fr,hu-hu,iw-il,ja-jp,pt-br,zh-cn" />
+			<var name="portletName" value="LanguagePortlet" />
 		</execute>
 
 		<execute macro="LanguagePortlet#viewLanguagesPresent">
 			<var name="currentLocales" value="de-de,es-es" />
+			<var name="portletName" value="LanguagePortlet" />
 		</execute>
 	</command>
 
@@ -326,6 +330,7 @@
 	</command>
 
 	<command name="ViewDisplayOptionsViaLanguagePortlet" priority="4">
+		<property name="portal.acceptance" value="Lori" />
 		<property name="test.name.skip.portal.instance" value="LanguageUsecase#ViewDisplayOptionsViaLanguagePortlet" />
 		<property name="testray.component.names" value="Localization" />
 
@@ -357,7 +362,8 @@
 		</execute>
 
 		<execute macro="LanguagePortlet#viewLanguageCurrent">
-			<var name="locale" value="nl-nl" />
+			<var name="language" value="en-us" />
+			<var name="portletName" value="LanguagePortlet" />
 		</execute>
 
 		<execute macro="Navigator#gotoSitePage">
@@ -418,6 +424,7 @@
 	</command>
 
 	<command name="ViewRemovedCurrentPortalLanguagesViaLanguagePortlet" priority="4">
+		<property name="portal.acceptance" value="Lori" />
 		<property name="test.name.skip.portal.instance" value="LanguageUsecase#ViewRemovedCurrentPortalLanguagesViaLanguagePortlet" />
 		<property name="testray.component.names" value="Localization" />
 
@@ -446,15 +453,18 @@
 		</execute>
 
 		<execute macro="LanguagePortlet#viewLanguageCurrent">
-			<var name="locale" value="en-us" />
+			<var name="language" value="en-us" />
+			<var name="portletName" value="LanguagePortlet" />
 		</execute>
 
 		<execute macro="LanguagePortlet#viewLanguagesAbsent">
 			<var name="missingLocales" value="de-de,es-es,hu-hu,iw-il,ja-jp,pt-br" />
+			<var name="portletName" value="LanguagePortlet" />
 		</execute>
 
 		<execute macro="LanguagePortlet#viewLanguagesPresent">
 			<var name="currentLocales" value="fr-fr,zh-cn" />
+			<var name="portletName" value="LanguagePortlet" />
 		</execute>
 
 		<execute macro="Portlet#gotoPortletOptions">
@@ -467,6 +477,7 @@
 	</command>
 
 	<command name="ViewRemovedCurrentSiteLanguagesViaLanguagePortlet" priority="4">
+		<property name="portal.acceptance" value="Lori" />
 		<property name="test.name.skip.portal.instance" value="LanguageUsecase#ViewRemovedCurrentSiteLanguageViaLanguagePortlet" />
 		<property name="testray.component.names" value="Localization" />
 
@@ -501,15 +512,18 @@
 		</execute>
 
 		<execute macro="LanguagePortlet#viewLanguageCurrent">
-			<var name="locale" value="en-us" />
+			<var name="language" value="en-us" />
+			<var name="portletName" value="LanguagePortlet" />
 		</execute>
 
 		<execute macro="LanguagePortlet#viewLanguagesAbsent">
 			<var name="missingLocales" value="fr-fr,hu-hu,ja-jp,pt-br,zh-cn" />
+			<var name="portletName" value="LanguagePortlet" />
 		</execute>
 
 		<execute macro="LanguagePortlet#viewLanguagesPresent">
 			<var name="currentLocales" value="de-de,es-es" />
+			<var name="portletName" value="LanguagePortlet" />
 		</execute>
 
 		<execute macro="Portlet#gotoPortletOptions">

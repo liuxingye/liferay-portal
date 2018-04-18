@@ -125,32 +125,43 @@
 	</command>
 
 	<command name="viewLanguageCurrent">
-		<execute function="AssertElementPresent" locator1="Language#DROPDOWN_LANGUAGE">
-			<var name="key_locale" value="${locale}" />
+		<execute function="AssertElementPresent" locator1="Language#DROPDOWN_LANGUAGE_TEXT">
+			<var name="key_language" value="${language}" />
+			<var name="key_portletName" value="${portletName}" />
 		</execute>
 	</command>
 
 	<command name="viewLanguagesAbsent">
-		<execute function="Click" locator1="Language#DROPDOWN" />
+		<execute function="Click" locator1="Language#DROPDOWN">
+			<var name="key_portletName" value="${portletName}" />
+		</execute>
 
 		<for list="${missingLocales}" param="missingLocale">
 			<execute function="AssertElementNotPresent" locator1="Language#LANGUAGE">
 				<var name="key_locale" value="${missingLocale}" />
+				<var name="key_portletName" value="${portletName}" />
 			</execute>
 		</for>
 
-		<execute function="Click" locator1="Language#DROPDOWN" />
+		<execute function="Click" locator1="Language#DROPDOWN">
+			<var name="key_portletName" value="${portletName}" />
+		</execute>
 	</command>
 
 	<command name="viewLanguagesPresent">
-		<execute function="Click" locator1="Language#DROPDOWN" />
+		<execute function="Click" locator1="Language#DROPDOWN">
+			<var name="key_portletName" value="${portletName}" />
+		</execute>
 
 		<for list="${currentLocales}" param="currentLocale">
 			<execute function="AssertElementPresent" locator1="Language#LANGUAGE">
 				<var name="key_locale" value="${currentLocale}" />
+				<var name="key_portletName" value="${portletName}" />
 			</execute>
 		</for>
 
-		<execute function="Click" locator1="Language#DROPDOWN" />
+		<execute function="Click" locator1="Language#DROPDOWN">
+			<var name="key_portletName" value="${portletName}" />
+		</execute>
 	</command>
 </definition>
