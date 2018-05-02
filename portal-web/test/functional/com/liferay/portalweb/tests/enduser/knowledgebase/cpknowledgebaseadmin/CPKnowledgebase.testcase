@@ -618,6 +618,8 @@
 	</command>
 
 	<command name="DeleteKBArticleViaKBAdmin" priority="4">
+		<property name="portal.acceptance" value="beck" />
+
 		<execute macro="Navigator#openURL" />
 
 		<execute macro="ProductMenu#gotoPortlet">
