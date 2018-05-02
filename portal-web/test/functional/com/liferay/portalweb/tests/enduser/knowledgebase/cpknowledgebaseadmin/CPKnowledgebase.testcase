@@ -643,7 +643,9 @@
 			<var name="kbArticleTitle" value="Knowledge Base Article Title" />
 		</execute>
 
-		<execute macro="KBArticle#deleteCP" />
+		<execute macro="KBArticle#deleteCP">
+			<var name="kbArticleTitle" value="Knowledge Base Article Title" />
+		</execute>
 
 		<execute macro="Navigator#openURL" />
 
