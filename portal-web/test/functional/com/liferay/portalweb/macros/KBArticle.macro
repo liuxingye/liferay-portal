@@ -661,7 +661,7 @@
 					<var name="key_rowEntry" value="${kbArticleTitle}" />
 				</execute>
 
-				<execute function="AssertClick" locator1="MenuItem#ANY_MENU_ITEM" value1="Delete">
+				<execute function="AssertClickNoError" locator1="MenuItem#ANY_MENU_ITEM" value1="Delete">
 					<var name="key_menuItem" value="Delete" />
 				</execute>
 			</else>
