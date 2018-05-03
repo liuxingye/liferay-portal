@@ -6,7 +6,7 @@
 		<if>
 			<condition function="IsElementPresent" locator1="Panel#PANEL_COLLAPSED" />
 			<then>
-				<execute function="AssertClick#assertTextClickAt" locator1="Notifications#NOTIFICATION_DELIVERY_PANEL" value1="${contentType}" />
+				<execute function="AssertClick#assertTextClickCaseInsensitive" locator1="Notifications#NOTIFICATION_DELIVERY_PANEL" value1="${contentType}" />
 			</then>
 		</if>
 
@@ -76,7 +76,7 @@
 
 		<var name="key_contentType" value="Bookmarks" />
 
-		<execute function="AssertClick#assertTextClickAt" locator1="Notifications#NOTIFICATION_DELIVERY_PANEL" value1="Bookmarks" />
+		<execute function="AssertClick#assertTextClickCaseInsensitive" locator1="Notifications#NOTIFICATION_DELIVERY_PANEL" value1="Bookmarks" />
 
 		<execute function="AssertTextEquals" locator1="Notifications#NOTIFICATION_DELIVERY_TEXT_1" value1="Adds a new bookmark in a folder you are subscribed to." />
 		<execute function="AssertTextEquals" locator1="Notifications#NOTIFICATION_DELIVERY_TEXT_2" value1="Updates a bookmark you are subscribed to." />

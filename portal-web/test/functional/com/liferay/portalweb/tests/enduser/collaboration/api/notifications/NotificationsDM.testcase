@@ -187,6 +187,8 @@
 	</command>
 
 	<command name="ViewNoWebsiteNotificationForUpdatedDocumentInFolder" priority="4">
+		<property name="portal.acceptance" value="beck" />
+
 		<execute macro="Navigator#gotoPage">
 			<var name="pageName" value="Documents and Media Page" />
 		</execute>
