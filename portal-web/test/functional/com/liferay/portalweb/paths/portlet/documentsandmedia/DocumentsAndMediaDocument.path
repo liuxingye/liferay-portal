@@ -271,7 +271,7 @@
 <!--DETAILS_PANEL-->
 <tr>
 	<td>DETAILS_URL</td>
-	<td>//a[@class='show-url-file']</td>
+	<td>//input[@id='_com_liferay_document_library_web_portlet_DLAdminPortlet_url']</td>
 	<td></td>
 </tr>
 <tr>

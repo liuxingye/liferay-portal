@@ -830,8 +830,6 @@
 
 		<execute macro="DMNavigator#gotoURLDetail" />
 
-		<execute function="AssertClick" locator1="Link#URL" value1="URL" />
-
 		<var method="selenium#getElementValue('//input[contains(@id,\'url\')]')" name="dmDocumentURL" />
 
 		<execute macro="ProductMenu#gotoSite">
@@ -922,7 +920,6 @@
 		</execute>
 
 		<execute macro="WebContent#viewPGViaWCD">
-			<var name="imageOnLive" value="true" />
 			<var name="webContentContent" value="Web Content Content" />
 		</execute>
 	</command>
