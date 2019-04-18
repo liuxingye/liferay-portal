@@ -229,7 +229,7 @@ definition {
 
 		Site.viewMemberUserGroupCP(userGroupName = "User Group Name");
 	}
-
+/*
 	@priority = "4"
 	test AddMemberUserGroupAssignSiteRole {
 		property testray.component.names = "Site Administration,User Groups";
@@ -275,7 +275,7 @@ definition {
 			resourceName = "User Group Name",
 			roleTitle = "Site Content Reviewer"
 		);
-	}
+	}*/
 
 	@priority = "4"
 	test LimitMembershipParentSite {
