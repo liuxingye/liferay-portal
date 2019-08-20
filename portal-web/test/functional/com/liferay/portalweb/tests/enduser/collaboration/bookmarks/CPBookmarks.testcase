@@ -1,6 +1,7 @@
 @component-name = "portal-collaboration"
 definition {
-
+	
+	property name="portal.acceptance" value="jeremy";
 	property portal.release = "false";
 	property portal.upstream = "true";
 	property testray.main.component.name = "Bookmarks";
