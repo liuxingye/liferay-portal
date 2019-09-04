@@ -390,4 +390,130 @@ definition {
 			locator1 = "Sharing#SHARED_CONTENT_CONTENT_TITLE_3");
 	}
 
+	@description = "This test covers LPS-99265. It ensures that staged assets cannot be shared unless published to Live."
+	@priority = "4"
+	test ShareAssetsOnLiveSite {
+		Navigator.openSiteURL(siteName = "Test Site");
+
+		ProductMenu.gotoPortlet(
+			category = "Publishing",
+			panel = "Site Administration",
+			portlet = "Staging");
+
+		Staging.activateStagingCP(siteName = "Test Site");
+
+		Navigator.gotoStagedSitePage(
+			pageName = "Test Page",
+			siteName = "Test Site");
+
+		Portlet.addPG(portletName = "Documents and Media");
+
+		DMDocument.enableActionsMenuOnPortlet();
+
+		Navigator.gotoStagedSitePage(
+			pageName = "Test Page",
+			siteName = "Test Site");
+
+		DMDocumentSharing.addDocumentWithOnlyOwnerPermissions(
+			dmDocumentDescription = "DM Document Description",
+			dmDocumentFile = "Document_1.doc",
+			dmDocumentTitle = "DM Document Title");
+
+		LexiconEntry.changeDisplayStyle(displayStyle = "list");
+
+		AssertClick(
+			key_dmDocumentTitle = "DM Document Title",
+			locator1 = "DocumentsAndMedia#DESCRIPTIVE_LIST_DOCUMENT_TITLE",
+			value1 = "DM Document Title");
+
+		AssertElementNotPresent(locator1 = "Button#SHARE_SIDENAV");
+
+		Navigator.gotoStagedSitePage(
+			pageName = "Test Page",
+			siteName = "Test Site");
+
+		ProductMenu.gotoPortlet(
+			category = "Content &amp; Data",
+			panel = "Site Administration",
+			portlet = "Blogs");
+
+		Blogs.addEntry(
+			entryContent = "Blogs Entry Content",
+			entryTitle = "Blogs Entry Title");
+
+		Navigator.gotoStagedSitePage(
+			pageName = "Test Page",
+			siteName = "Test Site");
+
+		ProductMenu.gotoPortlet(
+			category = "Content &amp; Data",
+			panel = "Site Administration",
+			portlet = "Blogs");
+
+		LexiconEntry.changeDisplayStyle(displayStyle = "list");
+
+		Click(
+			key_listEntry = "Blogs Entry Title",
+			locator1 = "LexiconList#LIST_ENTRY_ELLIPSIS");
+
+		AssertElementNotPresent(
+			key_menuItem = "Share",
+			locator1 = "MenuItem#ANY_MENU_ITEM");
+
+		Navigator.gotoStagedSitePage(
+			pageName = "Test Page",
+			siteName = "Test Site");
+
+		Staging.gotoPublishToLive();
+
+		Staging.publishToLive();
+
+		ProductMenu.gotoLiveSite();
+
+		ProductMenu.gotoPortlet(
+			category = "Content &amp; Data",
+			panel = "Site Administration",
+			portlet = "Blogs");
+
+		BlogsNavigator.gotoShare(entryTitle = "Blogs Entry Title");
+
+		Asset.share(
+			sharingPermissions = "View",
+			userEmailAddress = "userea@liferay.com",
+			userName = "userfn userln");
+
+		Navigator.gotoSitePage(
+			pageName = "Test Page",
+			siteName = "Test Site");
+
+		DMNavigator.gotoShare(dmDocumentTitle = "DM Document Title");
+
+		DMDocument.sharePG(
+			shareable = "true",
+			userEmailAddress = "userea@liferay.com",
+			userName = "userfn userln");
+
+		User.logoutPG();
+
+		User.loginUserPG(
+			password = "test",
+			userEmailAddress = "userea@liferay.com");
+
+		Notifications.viewBadgeCount(notificationCount = "2");
+
+		Notifications.gotoNotifications();
+
+		Notifications.viewNewSharedContent(
+			contentSharingPermission = "viewing",
+			contentTitle = "DM Document Title",
+			ownerName = "Test Test");
+
+		Notifications.gotoNotifications();
+
+		Notifications.viewNewSharedContent(
+			contentSharingPermission = "viewing",
+			contentTitle = "Blogs Entry Title",
+			ownerName = "Test Test");
+	}
+
 }
