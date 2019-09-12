@@ -36,6 +36,34 @@ definition {
 			locator1 = "Button#ANY");
 	}
 
+	macro insertLinkInGoogleDoc {
+		SelectFrame.selectFrameNoLoading(locator1 = "IFrame#GOOGLE_DOC");
+
+		if (isSet(googleDocs)) {
+			var key_googleDocContent = "${googleDocContent}";
+
+			Click(locator1 = "GoogleDoc#INSERT_LINK_BUTTON");
+
+			Click(locator1 = "GoogleDoc#INSERT_LINK_LINK");
+
+			Type(
+				locator1 = "GoogleDoc#INSERT_LINK_LINK",
+				value1 = "${linkAddress}");
+
+			Click(locator1 = "GoogleDoc#INSERT_LINK_TEXT");
+
+			Type(
+				locator1 = "GoogleDoc#INSERT_LINK_TEXT",
+				value1 = "${linkText}");
+
+			Click(locator1 = "GoogleDoc#INSERT_LINK_APPLY_BUTTON");
+
+			AssertElementPresent(locator1 = "GoogleDoc#INSERT_LINK_DOCUMENT_CONTENT");
+		}
+
+		SelectFrameTop();
+	}
+
 	macro saveAndExit {
 		var siteName = TestCase.getSiteName(siteName = "${siteName}");
 
