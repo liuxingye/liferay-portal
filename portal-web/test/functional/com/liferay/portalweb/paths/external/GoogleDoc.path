@@ -41,6 +41,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>INSERT_LINK_OPEN</td>
+	<td>//div[contains(@class,'link-bubble-header')]//a[contains(.,'${key_linkAddress}')]</td>
+	<td></td>
+</tr>
+<tr>
 	<td>INSERT_LINK_TEXT</td>
 	<td>//div[@class="docs-link-insertlinkbubble-toppane"]/input[@type='text']</td>
 	<td></td>
