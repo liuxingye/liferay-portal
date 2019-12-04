@@ -50,8 +50,6 @@ definition {
 			Button.click(button = "Save");
 
 			if (isSet(customImage)) {
-				Click(locator1 = "ControlMenu#EDIT_COG");
-
 				Navigator.gotoNavTab(navTab = "Open Graph");
 
 				AssertElementPresent(
