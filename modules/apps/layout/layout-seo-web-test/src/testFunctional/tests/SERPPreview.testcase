@@ -1,6 +1,7 @@
 @component-name = "portal-collaboration"
 definition {
 
+	property portal.acceptance = "jeremy";
 	property portal.release = "true";
 	property portal.upstream = "true";
 	property testray.main.component.name = "SEO";
@@ -58,8 +59,6 @@ definition {
 
 		Alert.viewSuccessMessage();
 
-		Navigator.gotoEditPageViaControlMenu(pageName = "Test Page");
-
 		Navigator.gotoNavTab(navTab = "SEO");
 
 		Page.viewPreview(
@@ -104,8 +103,6 @@ definition {
 		Button.clickSave();
 
 		Alert.viewSuccessMessage();
-
-		Navigator.gotoEditPageViaControlMenu(pageName = "Long Test Page Name To Check The Display Style Of The URL In The SERP Preview");
 
 		Navigator.gotoNavTab(navTab = "SEO");
 
@@ -179,8 +176,6 @@ definition {
 		Button.clickSave();
 
 		Alert.viewSuccessMessage();
-
-		Navigator.gotoEditPageViaControlMenu(pageName = "Test Page");
 
 		Navigator.gotoNavTab(navTab = "SEO");
 
