@@ -58,8 +58,6 @@ definition {
 
 		Alert.viewSuccessMessage();
 
-		Navigator.gotoEditPageViaControlMenu(pageName = "Test Page");
-
 		Navigator.gotoNavTab(navTab = "SEO");
 
 		Page.viewPreview(
@@ -104,8 +102,6 @@ definition {
 		Button.clickSave();
 
 		Alert.viewSuccessMessage();
-
-		Navigator.gotoEditPageViaControlMenu(pageName = "Long Test Page Name To Check The Display Style Of The URL In The SERP Preview");
 
 		Navigator.gotoNavTab(navTab = "SEO");
 
@@ -179,8 +175,6 @@ definition {
 		Button.clickSave();
 
 		Alert.viewSuccessMessage();
-
-		Navigator.gotoEditPageViaControlMenu(pageName = "Test Page");
 
 		Navigator.gotoNavTab(navTab = "SEO");
 
