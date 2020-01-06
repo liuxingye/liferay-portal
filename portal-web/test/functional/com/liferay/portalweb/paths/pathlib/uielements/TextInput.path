@@ -334,6 +334,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>OPEN_GRAPH_IMAGE_ALT_DESCRIPTION</td>
+	<td>//div[input[contains(@id,'openGraphImageAlt')]]//input[@type='text']</td>
+	<td></td>
+</tr>
+<tr>
 	<td>OPEN_GRAPH_IMAGE_ALT_DESCRIPTION_DISABLED</td>
 	<td>//textarea[contains(@name,'${key_text}') and @disabled]</td>
 	<td></td>
