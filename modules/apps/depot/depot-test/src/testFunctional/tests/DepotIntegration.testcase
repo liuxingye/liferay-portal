@@ -137,6 +137,10 @@ definition {
 			depotDescription = "This is the description of a depot",
 			depotName = "Test Depot Name");
 
+		JSONLayout.addPublicLayout(
+			groupName = "Site Name",
+			layoutName = "Page Name");
+
 		DepotNavigator.openDepotAdmin();
 
 		DepotNavigator.gotoEdit(depotName = "Test Depot Name");
@@ -145,7 +149,7 @@ definition {
 
 		Depot.connectSite(siteList = "Site Name");
 
-		ProductMenu.gotoSite(site = "Site Name");
+		Navigator.openSiteURL(siteName = "Site Name");
 
 		DepotNavigator.openDepotAdmin();
 
