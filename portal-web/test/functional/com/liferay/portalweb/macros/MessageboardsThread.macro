@@ -53,6 +53,30 @@ definition {
 		PortletEntry.publish();
 	}
 
+	macro addCPWithCategory {
+		LexiconEntry.gotoAdd();
+
+		MenuItem.click(menuItem = "Thread");
+
+		Click(locator1 = "TextInput#SUBJECT");
+
+		Type(
+			locator1 = "TextInput#SUBJECT",
+			value1 = "${threadSubject}");
+
+		AlloyEditor.typeEditor(
+			content = "${threadBody}",
+			editor = "body");
+
+		Panel.expandPanel(panel = "Categorization");
+
+		AssetCategorization.addCategory(
+			categoryName = "${categoryName}",
+			vocabularyName = "${vocabularyName}");
+
+		PortletEntry.publish();
+	}
+
 	macro addInvalidAttachmentPG {
 		AssertClick(
 			locator1 = "Button#NEW_THREAD",
