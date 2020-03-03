@@ -1221,6 +1221,8 @@ definition {
 
 	@priority = "4"
 	test ViewBlogsEntryWithImageEditedViaItemSelector {
+		property portal.acceptance = "yvonne";
+
 		DMNavigator.openDocumentsAndMediaAdmin(siteURLKey = "guest");
 
 		DMDocument.addCP(
