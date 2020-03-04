@@ -162,7 +162,6 @@ definition {
 		Depot.viewNoConnectedSiteCP();
 	}
 
-	@description = "This ensures that a depot web content can be searched on a connected site when searching is reenabled."
 	@priority = "5"
 	test ReenableSearchability {
 		JSONLayout.addWidgetToPublicLayout(
