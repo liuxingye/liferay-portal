@@ -27,7 +27,7 @@ definition {
 	@description = "This makes sure that an image can be uploaded via URL."
 	@priority = "5"
 	test AddBlogsImageViaURL {
-		property portal.acceptance = "true";
+		property portal.acceptance = "beck";
 
 		BlogsNavigator.openBlogsAdmin(siteURLKey = "guest");
 
