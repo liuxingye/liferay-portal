@@ -128,6 +128,8 @@ definition {
 			depotName = "Test Depot Name",
 			portlet = "Web Content");
 
+		ProductMenuHelper.openProductMenu();
+
 		AssertVisible(
 			key_category = "Recycle Bin",
 			locator1 = "ProductMenu#CATEGORY_COLLAPSED");
