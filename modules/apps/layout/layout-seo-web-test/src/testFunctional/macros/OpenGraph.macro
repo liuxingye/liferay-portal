@@ -61,6 +61,14 @@ definition {
 				locator1 = "ItemSelector#ADD_BUTTON",
 				value1 = "Add");
 
+			if (IsElementPresent(locator1 = "ItemSelector#ADD_BUTTON")) {
+				Pause(locator1 = "5000");
+
+				AssertClick(
+					locator1 = "ItemSelector#ADD_BUTTON",
+					value1 = "Add");
+			}
+
 			SelectFrameTop(value1 = "relative=top");
 
 			if (isSet(altDescription)) {
