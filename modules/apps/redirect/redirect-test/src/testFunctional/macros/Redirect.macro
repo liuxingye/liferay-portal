@@ -189,4 +189,11 @@ definition {
 			value1 = "${requestNumber}");
 	}
 
+	macro viewURLsOrderedCP {
+		AssertTextEquals(
+			key_rowNumber = "${rowNumber}",
+			locator1 = "ContentRow#ENTRY_CONTENT_ROW_NUMBER_TD_2",
+			value1 = "${requestNumber}");
+	}
+
 }
