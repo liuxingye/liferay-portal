@@ -713,6 +713,8 @@ definition {
 	@description = "This ensures that the stars rating can be revoked."
 	@priority = "5"
 	test RevokeBlogsStarsRating {
+		property custom.properties = "jsonws.web.service.paths.excludes=";
+
 		JSONLayout.addPublicLayout(
 			groupName = "Guest",
 			layoutName = "Blogs Page");
