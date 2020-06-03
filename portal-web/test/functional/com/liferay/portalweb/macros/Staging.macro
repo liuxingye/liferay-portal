@@ -639,9 +639,9 @@ definition {
 			Check.toggleSwitch(locator1 = "Staging#STAGING_MENU_READY_FOR_PUBLICATION");
 		}
 
-		Click(locator1 = "Staging#STAGING_PUBLISH_TO_LIVE_BUTTON");
-
 		WaitForLiferayEvent.initializeLiferayEventLog();
+
+		Click(locator1 = "Staging#STAGING_PUBLISH_TO_LIVE_BUTTON");
 
 		SelectFrame(locator1 = "IFrame#MODAL_BODY");
 	}
