@@ -89,6 +89,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>CHECKBOX_DISABLED_EXPORT_TRANSLATION</td>
+	<td>//label[contains(.,'${key_checkboxName}')]/input[@disabled]</td>
+	<td></td>
+</tr>
+<tr>
 	<td>DELETIONS</td>
 	<td>//label[contains(.,'Deletions')]/input[contains(@id,'DELETIONS')]</td>
 	<td></td>
