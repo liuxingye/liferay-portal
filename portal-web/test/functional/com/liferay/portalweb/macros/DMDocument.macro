@@ -1113,6 +1113,38 @@ definition {
 			AssertElementNotPresent(locator1 = "Panel#PANEL_EXPANDED");
 		}
 
+		if (isSet(imageFieldEdit)) {
+			if (isSet(fieldFieldLabel)) {
+				var key_fieldFieldLabel = "${fieldFieldLabel}";
+			}
+			else {
+				var key_fieldFieldLabel = "Image";
+			}
+
+			AssertClick(
+				locator1 = "WCEditWebContent#SELECT_BUTTON",
+				value1 = "Select");
+
+			if ("${navTab}" == "Documents and Media") {
+				if (isSet(imageFileNameEdit)) {
+					ItemSelector.selectDMImage(
+						imageFileName = "${imageFieldEdit}",
+						navTab = "${navTab}");
+				}
+				else {
+					ItemSelector.uploadFile(
+						navTab = "${navTab}",
+						uploadFileName = "${imageFieldEdit}");
+				}
+			}
+
+			if (isSet(imageDescription)) {
+				Type(
+					locator1 = "TextInput#IMAGE_DESCRIPTION",
+					value1 = "${imageDescriptionEdit}");
+			}
+		}
+
 		if (isSet(checkedOut)) {
 			Click(locator1 = "Button#SAVE");
 		}
