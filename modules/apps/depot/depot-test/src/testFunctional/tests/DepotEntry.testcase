@@ -317,6 +317,192 @@ definition {
 		Depot.viewDefaultCP();
 	}
 
+	@description = "This ensures that a user can deselect depots and delete the reselected ones in cards view."
+	@priority = "5"
+	test DeselectAndDeleteInCardsView {
+		for (var depotName : list "Test Depot Name 1,Test Depot Name 2,Test Depot Name 3, Test Depot Name 4") {
+			JSONDepot.addDepot(
+				depotDescription = "This is the description of a depot",
+				depotName = "${depotName}");
+		}
+
+		DepotNavigator.openDepotAdmin();
+
+		PortletEntry.selectAll();
+
+		Click.clickNoWaitForVisible(
+			key_card = "Test Depot Name 1",
+			locator1 = "Card#CARD_CHECKBOX");
+
+		AssertTextEquals(
+			locator1 = "ManagementBar#NAVBAR_TEXT",
+			value1 = "3 of 4 Selected");
+
+		Click.clickNoWaitForVisible(
+			key_card = "Test Depot Name 2",
+			locator1 = "Card#CARD_CHECKBOX");
+
+		AssertTextEquals(
+			locator1 = "ManagementBar#NAVBAR_TEXT",
+			value1 = "2 of 4 Selected");
+
+		Click.clickNoWaitForVisible(
+			key_card = "Test Depot Name 3",
+			locator1 = "Card#CARD_CHECKBOX");
+
+		AssertTextEquals(
+			locator1 = "ManagementBar#NAVBAR_TEXT",
+			value1 = "1 of 4 Selected");
+
+		Click.clickNoWaitForVisible(
+			key_card = "Test Depot Name 4",
+			locator1 = "Card#CARD_CHECKBOX");
+
+		AssertElementPresent(locator1 = "ManagementBar#FILTER_AND_ORDER");
+
+		for (var depotLists : list "Test Depot Name 1,Test Depot Name 2") {
+			LexiconCard.checkCardCheckbox(card = "${depotLists}");
+		}
+
+		Depot.deleteCP(deletions = "true");
+
+		for (var depotLists : list "Test Depot Name 3,Test Depot Name 4") {
+			LexiconCard.checkCardCheckbox(card = "${depotLists}");
+		}
+
+		Depot.deleteCP(deletions = "true");
+
+		Depot.viewDefaultCP();
+	}
+
+	@description = "This ensures that a user can deselect depots and delete the reselected ones in list view."
+	@priority = "4"
+	test DeselectAndDeleteInListView {
+		for (var depotName : list "Test Depot Name 1,Test Depot Name 2,Test Depot Name 3, Test Depot Name 4") {
+			JSONDepot.addDepot(
+				depotDescription = "This is the description of a depot",
+				depotName = "${depotName}");
+		}
+
+		DepotNavigator.openDepotAdmin();
+
+		LexiconEntry.changeDisplayStyle(displayStyle = "list");
+
+		PortletEntry.selectAll();
+
+		Uncheck(
+			key_listEntry = "Test Depot Name 1",
+			locator1 = "LexiconList#LIST_ENTRY_CHECKBOX");
+
+		AssertTextEquals(
+			locator1 = "ManagementBar#NAVBAR_TEXT",
+			value1 = "3 of 4 Selected");
+
+		Uncheck(
+			key_listEntry = "Test Depot Name 2",
+			locator1 = "LexiconList#LIST_ENTRY_CHECKBOX");
+
+		AssertTextEquals(
+			locator1 = "ManagementBar#NAVBAR_TEXT",
+			value1 = "2 of 4 Selected");
+
+		Uncheck(
+			key_listEntry = "Test Depot Name 3",
+			locator1 = "LexiconList#LIST_ENTRY_CHECKBOX");
+
+		AssertTextEquals(
+			locator1 = "ManagementBar#NAVBAR_TEXT",
+			value1 = "1 of 4 Selected");
+
+		Uncheck(
+			key_listEntry = "Test Depot Name 4",
+			locator1 = "LexiconList#LIST_ENTRY_CHECKBOX");
+
+		AssertElementPresent(locator1 = "ManagementBar#FILTER_AND_ORDER");
+
+		for (var depotLists : list "Test Depot Name 1,Test Depot Name 2") {
+			Check(
+				key_listEntry = "${depotLists}",
+				locator1 = "LexiconList#LIST_ENTRY_CHECKBOX");
+		}
+
+		Depot.deleteCP(deletions = "true");
+
+		for (var depotLists : list "Test Depot Name 3,Test Depot Name 4") {
+			Check(
+				key_listEntry = "${depotLists}",
+				locator1 = "LexiconList#LIST_ENTRY_CHECKBOX");
+		}
+
+		Depot.deleteCP(deletions = "true");
+
+		Depot.viewDefaultCP();
+	}
+
+	@description = "This ensures that a user can deselect depots and delete the reselected ones in table view."
+	@priority = "4"
+	test DeselectAndDeleteInTableView {
+		for (var depotName : list "Test Depot Name 1,Test Depot Name 2,Test Depot Name 3, Test Depot Name 4") {
+			JSONDepot.addDepot(
+				depotDescription = "This is the description of a depot",
+				depotName = "${depotName}");
+		}
+
+		DepotNavigator.openDepotAdmin();
+
+		LexiconEntry.changeDisplayStyle(displayStyle = "table");
+
+		PortletEntry.selectAll();
+
+		Uncheck(
+			key_rowEntry = "Test Depot Name 1",
+			locator1 = "ContentRow#ENTRY_CONTENT_ENTRY_CHECKBOX");
+
+		AssertTextEquals(
+			locator1 = "ManagementBar#NAVBAR_TEXT",
+			value1 = "3 of 4 Selected");
+
+		Uncheck(
+			key_rowEntry = "Test Depot Name 2",
+			locator1 = "ContentRow#ENTRY_CONTENT_ENTRY_CHECKBOX");
+
+		AssertTextEquals(
+			locator1 = "ManagementBar#NAVBAR_TEXT",
+			value1 = "2 of 4 Selected");
+
+		Uncheck(
+			key_rowEntry = "Test Depot Name 3",
+			locator1 = "ContentRow#ENTRY_CONTENT_ENTRY_CHECKBOX");
+
+		AssertTextEquals(
+			locator1 = "ManagementBar#NAVBAR_TEXT",
+			value1 = "1 of 4 Selected");
+
+		Uncheck(
+			key_rowEntry = "Test Depot Name 4",
+			locator1 = "ContentRow#ENTRY_CONTENT_ENTRY_CHECKBOX");
+
+		AssertElementPresent(locator1 = "ManagementBar#FILTER_AND_ORDER");
+
+		for (var depotLists : list "Test Depot Name 1,Test Depot Name 2") {
+			Check(
+				key_rowEntry = "${depotLists}",
+				locator1 = "ContentRow#ENTRY_CONTENT_ENTRY_CHECKBOX");
+		}
+
+		Depot.deleteCP(deletions = "true");
+
+		for (var depotLists : list "Test Depot Name 3,Test Depot Name 4") {
+			Check(
+				key_rowEntry = "${depotLists}",
+				locator1 = "ContentRow#ENTRY_CONTENT_ENTRY_CHECKBOX");
+		}
+
+		Depot.deleteCP(deletions = "true");
+
+		Depot.viewDefaultCP();
+	}
+
 	@description = "This ensures that a depot can be edited."
 	@priority = "5"
 	test EditDepot {
