@@ -26,6 +26,65 @@ definition {
 		}
 	}
 
+	@description = "This test covers LPS-96564. It ensures that a private site cannot be viewed by a non-site member via a calendar widget."
+	@priority = "4"
+	test PrivateSiteShouldNotBeViewableWithoutPermissions {
+		property custom.properties = "jsonws.web.service.paths.excludes=";
+
+		ApplicationsMenu.gotoPortlet(
+			category = "Sites",
+			panel = "Control Panel",
+			portlet = "Sites");
+
+		Site.addBlankCP(
+			membershipType = "Private",
+			siteName = "Site A");
+
+		JSONGroup.addGroup(groupName = "Site X");
+
+		JSONUser.addUser(
+			userEmailAddress = "userea@liferay.com",
+			userFirstName = "userfn",
+			userLastName = "userln",
+			userScreenName = "usersn");
+
+		JSONUser.setFirstPassword(
+			agreeToTermsAndAnswerReminderQuery = "true",
+			requireReset = "false",
+			userEmailAddress = "userea@liferay.com");
+
+		LexiconEntry.gotoEntryMenuItem(
+			menuItem = "Manage Pages",
+			rowEntry = "userfn usersn");
+
+		SitePages.addPrivatePage(pageName = "Private Test Page");
+
+		Navigator.gotoSpecificURLPage(
+			pageName = "Private Test Page",
+			url = "${portalURL}/user/usersn/private-test-page");
+
+		Portlet.addPG(portletName = "Calendar");
+
+		User.logoutAndLoginPG(
+			userLoginEmailAddress = "userea@liferay.com",
+			userLoginFullName = "userfn userln");
+
+		Navigator.gotoSpecificURLPage(
+			pageName = "Private Test Page",
+			url = "${portalURL}/user/usersn/private-test-page");
+
+		CalendarNavigator.gotoAddEvent();
+
+		ItemSelector.gotoItemSelectorViaCKEditor();
+
+		SelectFrame(locator1 = "ItemSelector#ITEM_SELECTOR_IFRAME");
+
+		AssertClick(
+			key_breadcrumbName = "Sites and Libraries",
+			locator1 = "Breadcrumb#BREADCRUMB_ENTRY",
+			value1 = "Sites and Libraries");						
+	}	
+
 	@description = "This makes sure that an image can be uploaded via URL."
 	@priority = "5"
 	@refactorneeded
