@@ -1095,6 +1095,7 @@ definition {
 		Questions.subscribeQuestion();
 
 		User.logoutAndLoginPG(
+			freeLogin = "true",
 			userLoginEmailAddress = "userea@liferay.com",
 			userLoginFullName = "userfn userln");
 
@@ -1109,6 +1110,7 @@ definition {
 		Questions.answerQuestion(contentField = "This is my answer");
 
 		User.logoutAndLoginPG(
+			freeLogin = "true",
 			userLoginEmailAddress = "test@liferay.com",
 			userLoginFullName = "Test Test");
 
@@ -1172,6 +1174,7 @@ definition {
 		Questions.subscribeTopic();
 
 		User.logoutAndLoginPG(
+			freeLogin = "true",
 			userLoginEmailAddress = "userea@liferay.com",
 			userLoginFullName = "userfn userln");
 
@@ -1184,6 +1187,7 @@ definition {
 			titleField = "Title AddQuestion");
 
 		User.logoutAndLoginPG(
+			freeLogin = "true",
 			userLoginEmailAddress = "test@liferay.com",
 			userLoginFullName = "Test Test");
 
@@ -1616,6 +1620,7 @@ definition {
 			voteUp = "true");
 
 		User.logoutAndLoginPG(
+			freeLogin = "true",
 			userLoginEmailAddress = "userea@liferay.com",
 			userLoginFullName = "userfn userln");
 
