@@ -205,6 +205,8 @@ definition {
 	@priority = "4"
 	@refactorneeded
 	test AddFolderDocumentDuplicate {
+		property portal.acceptance = "beck";
+
 		Navigator.gotoPage(pageName = "Documents and Media Page");
 
 		DMFolder.addPG(
