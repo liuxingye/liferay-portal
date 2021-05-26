@@ -38,6 +38,7 @@ definition {
 	@description = "This ensures that Google Translation can be used to auto-translate a Web Content into Japanese"
 	@priority = "5"
 	test CanTranslateWCToJapaneseWithGoogle {
+		property portal.acceptance = "beck";
 		property test.name.skip.portal.instance = "AutoTranslation#CanTranslateWCToJapaneseWithGoogle";
 
 		JSONWebcontent.addWebContent(
@@ -84,6 +85,7 @@ definition {
 	@description = "The Auto Translate button should not appear in the side-by-side view after Google Translations are enabled then disabled"
 	@priority = "5"
 	test CanViewTranslationAfterDisablingGoogleConfiguration {
+		property portal.acceptance = "beck";
 		property test.name.skip.portal.instance = "AutoTranslation#CanViewTranslationAfterDisablingGoogleConfiguration";
 
 		JSONWebcontent.addWebContent(

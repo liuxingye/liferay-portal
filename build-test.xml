@@ -9916,6 +9916,7 @@ auto.deploy.dest.dir=C:/WINDOWS/system32/config/systemprofile/liferay/websphere-
 		<antcall target="prepare-selenium-email-properties" />
 		<antcall target="prepare-selenium-facebook-properties" />
 		<antcall target="prepare-selenium-google-properties" />
+		<antcall target="prepare-selenium-google-cloud-translation-properties" />
 		<antcall target="prepare-selenium-onedrive-properties" />
 		<antcall target="prepare-selenium-openid-properties" />
 		<antcall target="prepare-selenium-recaptcha-properties" />
@@ -10828,6 +10829,17 @@ auto.deploy.dest.dir=C:/WINDOWS/system32/config/systemprofile/liferay/websphere-
 			<then>
 				<echo append="true" file="${test.ext.properties.file}">
 					google.client.secret.4=${google.client.secret.4}
+				</echo>
+			</then>
+		</if>
+	</target>
+
+	<target name="prepare-selenium-google-cloud-translation-properties">
+		<if>
+			<isset property="google.cloud.translation.service.key" />
+			<then>
+				<echo append="true" file="${test.ext.properties.file}">
+					google.cloud.translation.service.key=${google.cloud.translation.service.key}
 				</echo>
 			</then>
 		</if>
