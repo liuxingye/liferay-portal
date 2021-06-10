@@ -17,14 +17,14 @@ definition {
 	macro addWikiChildPage {
 		Variables.assertDefined(parameterList = "${wikiParentPageName},${wikiChildPageName},${wikiNodeName}");
 
-		var pageId = JSONWikiSetter.setPageId(groupName = "${groupName}", title = "${wikiParentPageName}", name = "${wikiNodeName}");
+		var parentResourcePrimKey = JSONWikiSetter.setResourcePrimKey(groupName = "${groupName}", title = "${wikiParentPageName}", name = "${wikiNodeName}");
 
 		JSONWikiAPI._addWikiChildPage(
 			assetCategoryIds = "${assetCategoryIds}",
 			content = "${wikiChildPageContent}",
 			encodingFormat = "${encodingFormat}",
 			headline = "${wikiChildPageName}",
-			pageId = "${pageId}",
+			parentResourcePrimKey = "${parentResourcePrimKey}",
 			tagName = "${tagName}",
 			viewableBy = "${viewableBy}");
 	}
@@ -56,6 +56,17 @@ definition {
 			nodeId = "${nodeId}",
 			tagName = "${tagName}",
 			viewableBy = "${viewableBy}");
+	}
+
+	@summary = "Directly calls the JSON WS API to move page to trash"
+	macro movePageToTrash {
+		Variables.assertDefined(parameterList = "${groupName},${wikiNodeName},${wikiPageName}");
+
+		var nodeId = JSONWikiSetter.setNodeId(groupName = "${groupName}", name = "${wikiNodeName}");
+
+		JSONWikiAPI._movePageToTrash(
+			nodeId = "${nodeId}",
+			title = "${wikiPageName}");
 	}
 
 	@summary = "Directly calls the JSON WS API to update a wiki page"
