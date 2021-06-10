@@ -985,7 +985,7 @@ definition {
 	@priority = "5"
 	@refactorneeded
 	test MoveToRecycleBinFolder {
-		property portal.acceptance = "true";
+		property portal.acceptance = "beck";
 
 		DMNavigator.openDocumentsAndMediaAdmin(siteURLKey = "guest");
 
