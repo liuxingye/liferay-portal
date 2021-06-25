@@ -20,11 +20,23 @@ definition {
 
 		DMNavigator.openToConfigInSystemSettings(portlet = "Google Cloud Translator");
 
+		/*var os = OSDetector.isWindows();
+
+		if ("${os}" == "true") {
+			var lineSeparater = "\r\n";
+		}
+		else {
+			var lineSeparater = "\n";
+		}*/
+		
+		var value = PropsUtil.get("google.cloud.translation.service.key");
+		var fieldReference = StringUtil.replace("${value}", "${line.separator}", "\n");
+
 		SystemSettings.configureSystemSetting(
 			enableSetting = "true",
 			settingFieldName = "Enabled",
 			settingName = "Service Account Private Key",
-			settingValue = PropsUtil.get("google.cloud.translation.service.key"));
+			settingValue = "${fieldReference}");
 	}
 
 	tearDown {
