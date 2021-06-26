@@ -160,11 +160,11 @@ definition {
 		var os = OSDetector.isWindows();
 
 		if ("${os}" == "true") {
-			var lineSeparater = "\r\n";
+			var lineSeparater = "\\r\\n";
 		}
 
 		else {
-			var lineSeparater = "\n";
+			var lineSeparater = "\\n";
 		}
 
 		var keys = PropsUtil.get("google.cloud.translation.service.key.private.key");
