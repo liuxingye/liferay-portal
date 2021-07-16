@@ -73,6 +73,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>PREVIEW_LABEL</td>
+	<td>//label[contains(.,'Preview')]</td>
+	<td></td>
+</tr>
+<tr>
 	<td>PREVIEW_SERP</td>
 	<td>//div[contains(@class,'preview-seo-serp')]</td>
 	<td></td>
