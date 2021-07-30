@@ -30,6 +30,7 @@ definition {
 	@priority = "4"
 	test CanReviewDocumentWhenDateIsChanged {
 		property custom.properties = "company.default.time.zone=America/Los_Angeles";
+		property portal.acceptance = "beck";
 		property test.name.skip.portal.instance = "DMFileEntry#CanReviewDocumentWhenDateIsChanged";
 
 		DMDocument.updateCheckInterval(fieldValue = "2");
@@ -85,6 +86,7 @@ definition {
 	@priority = "4"
 	test CanReviewDocumentWhenDateIsDisabled {
 		property custom.properties = "company.default.time.zone=America/Los_Angeles";
+		property portal.acceptance = "beck";
 		property test.name.skip.portal.instance = "DMFileEntry#CanReviewDocumentWhenDateIsDisabled";
 
 		DMDocument.updateCheckInterval(fieldValue = "2");
@@ -138,6 +140,7 @@ definition {
 	@priority = "5"
 	test CanReviewDocumentWhenDateIsSet {
 		property custom.properties = "company.default.time.zone=America/Los_Angeles";
+		property portal.acceptance = "beck";
 		property test.name.skip.portal.instance = "DMFileEntry#CanReviewDocumentWhenDateIsSet";
 
 		DMDocument.updateCheckInterval(fieldValue = "2");
