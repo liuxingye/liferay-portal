@@ -677,6 +677,11 @@ definition {
 			value1 = "Draft");
 	}
 
+	@priority = "3"
+	test Test {
+		Navigator.gotoPage(pageName = "Message Boards Page");
+	}
+
 	@priority = "4"
 	@refactorneeded
 	test ViewMBThreadReplyViaMoreMessages {
