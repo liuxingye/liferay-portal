@@ -583,9 +583,15 @@ definition {
 		AssertTextEquals.assertPartialText(
 			locator1 = "Message#ERROR_IMPORT_TRANSLATIONS",
 			value1 = "${errorMessage}");
+			
 		AssertTextEquals.assertPartialText(
 			locator1 = "Message#ERROR_IMPORT_TRANSLATIONS_ITEM_MESSAGE",
 			value1 = "${errorMessageItem}");
+			
+	macro viewNoEntryDefault {
+		AssertTextEquals(
+			locator1 = "Message#EMPTY_INFO",
+			value1 = "No entries were found.");
 	}
 
 	macro viewImportResult {
