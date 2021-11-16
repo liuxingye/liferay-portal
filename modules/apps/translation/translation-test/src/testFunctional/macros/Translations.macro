@@ -508,6 +508,12 @@ definition {
 			value1 = "${errorMessageItem}");
 	}
 
+	macro viewNoEntryDefault {
+		AssertTextEquals(
+			locator1 = "Message#EMPTY_INFO",
+			value1 = "No entries were found.");
+	}
+
 	macro viewTargetFields {
 		if (isSet(webContentTitle)) {
 			AssertElementPresent(
