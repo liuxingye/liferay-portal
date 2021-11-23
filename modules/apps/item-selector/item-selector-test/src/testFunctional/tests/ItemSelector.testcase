@@ -1292,8 +1292,8 @@ definition {
 		var portalURL = PropsUtil.get("portal.url");
 
 		JSONGroup.addGroup(
-			groupName = "Site A",
-			type = "Private");
+			type = "Private",
+			groupName = "Site A");
 
 		JSONGroup.addGroup(groupName = "Site X");
 
