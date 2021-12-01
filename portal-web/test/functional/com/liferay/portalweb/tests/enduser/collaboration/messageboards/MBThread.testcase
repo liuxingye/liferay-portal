@@ -522,13 +522,40 @@ definition {
 	}
 
 	@description = "This is a test for LPS-136915. It checks that an attachment can be restored."
-	@ignore = "true"
 	@priority = "3"
 	test CanRestoreAttachment {
-		property portal.acceptance = "false";
+		JSONMBMessage.addMessage(
+			groupName = "Guest",
+			threadBody = "MB Thread Message Body",
+			threadSubject = "MB Thread Message Subject");
 
-		// TODO LPS-136915 CanRestoreAttachment pending implementation
+		JSONMBMessage.addAttachmentToMessage(
+			fileName = "Document_1.doc",
+			groupName = "Guest",
+			mimeType = "application/msword",
+			threadSubject = "MB Thread Message Subject");
 
+		MessageBoardsAdmin.openMessageBoardsAdmin(siteURLKey = "guest");
+
+		MessageboardsThread.editCP(
+			mbAttachmentFile = "Document_1.doc",
+			threadAttachmentRemove = "true",
+			threadBodyEdit = "MB Thread Message Body Edit");
+
+		PortletEntry.publish();
+
+		PortletEntry.clickEditFromEllipsis();
+
+		MessageboardsThread.restoreMBAttachmentCP(mbAttachmentFile = "Document_1.doc");
+
+		MessageBoardsAdmin.openMessageBoardsAdmin(siteURLKey = "guest");
+
+		MessageboardsThread.viewCP(
+			mbAttachmentFile = "Document_1.doc",
+			replyCount = "0",
+			threadBody = "MB Thread Message Body Edit",
+			threadSubject = "MB Thread Message Subject",
+			userName = "Test Test");
 	}
 
 	@priority = "5"
