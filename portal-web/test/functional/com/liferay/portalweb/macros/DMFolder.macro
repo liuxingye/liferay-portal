@@ -317,10 +317,9 @@ definition {
 		SelectFrame.selectFrameNoLoading(locator1 = "DocumentsAndMediaSelectFolder#SELECT_FOLDER_IFRAME");
 
 		if ("${moveSubfolder}" == "true") {
-			AssertClick(
+			AssertElementNotPresent(
 				key_breadcrumbName = "Home",
-				locator1 = "BreadcrumbPortlet#BREADCRUMB_FOLDER",
-				value1 = "Home");
+				locator1 = "BreadcrumbPortlet#BREADCRUMB_FOLDER");
 
 			AssertClick(
 				key_text = "Select This Folder",

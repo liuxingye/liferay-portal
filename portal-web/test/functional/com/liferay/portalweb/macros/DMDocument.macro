@@ -1881,15 +1881,24 @@ definition {
 
 		SelectFrame(locator1 = "DocumentsAndMediaSelectFolder#SELECT_FOLDER_IFRAME");
 
-		var key_dmFolderName = "${dmSubFolderName}";
+		AssertElementNotPresent(
+			key_breadcrumbName = "Home",
+			locator1 = "BreadcrumbPortlet#BREADCRUMB_FOLDER");
 
-		AssertTextEquals(
+		AssertClick(
+			key_dmFolderName = "${dmFolderName}",
+			locator1 = "DocumentsAndMediaSelectFolder#FOLDER",
+			value1 = "${dmFolderName}");
+
+		AssertClick(
+			key_dmFolderName = "${dmSubFolderName}",
 			locator1 = "DocumentsAndMediaSelectFolder#FOLDER",
 			value1 = "${dmSubFolderName}");
 
 		AssertClick(
-			locator1 = "DocumentsAndMediaSelectFolder#SELECT_BUTTON",
-			value1 = "Select");
+			key_text = "Select This Folder",
+			locator1 = "Button#ANY",
+			value1 = "Select This Folder");
 
 		SelectFrame(locator1 = "relative=top");
 
