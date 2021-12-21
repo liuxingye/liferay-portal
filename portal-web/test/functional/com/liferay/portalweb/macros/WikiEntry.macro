@@ -23,6 +23,18 @@ definition {
 		SelectFrame(value1 = "relative=top");
 	}
 
+	macro addPageSummary {
+		var key_text = "Summary";
+
+		if (IsNotVisible(locator1 = "TextInput#ANY")) {
+			Panel.expandPanel(panel = "Configuration");
+		}
+
+		Type(
+			locator1 = "TextInput#ANY",
+			value1 = "${wikiPageSummary}");
+	}
+
 	macro addPageTitle {
 		if (isSet(wikiPageTitle)) {
 			var title = "${wikiPageTitle}";
