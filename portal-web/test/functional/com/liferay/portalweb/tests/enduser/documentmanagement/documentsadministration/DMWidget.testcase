@@ -48,6 +48,25 @@ definition {
 		}
 	}
 
+	@description = "This test checks that the javascript in the user name will not be executed after adding a document."
+	@priority = "3"
+	test CannotExecuteXSSAfterAddingDocument {
+		Navigator.openURL();
+
+		UserBar.gotoDropdownItem(dropdownItem = "Account Settings");
+
+		User.editUserInformation(userLastNameEdit = '''Test<script>alert('hello!')</script>''');
+
+		Navigator.gotoPage(pageName = "Documents and Media Page");
+
+		DMDocument.addPG(
+			dmDocumentDescription = "DM Document Description",
+			dmDocumentFile = "Document_1.txt",
+			dmDocumentTitle = "Document_1.txt");
+
+		AssertAlertNotPresent();
+	}
+
 	@description = "This test covers LPS-102179. It ensures that the user can create a shortcut using a file from a different site after setting the root folder."
 	@priority = "5"
 	@refactordone

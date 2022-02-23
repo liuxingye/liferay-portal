@@ -673,6 +673,30 @@ definition {
 		Questions.answerQuestion(contentField = "This is my answer2");
 	}
 
+	@description = "This test checks that the javascript in the user name will not be executed after posting the question."
+	@priority = "3"
+	test CannotExecuteXSSAfterPostingEntry {
+		JSONMBMessage.addCategory(
+			categoryDescription = "Description",
+			categoryName = "Questions Test Category",
+			userEmailAddress = "test@liferay.com");
+
+		Navigator.openURL();
+
+		UserBar.gotoDropdownItem(dropdownItem = "Account Settings");
+
+		User.editUserInformation(userLastNameEdit = '''Test<script>alert('hello!')</script>''');
+
+		Questions.askQuestionFillingTheMandatoryFields(
+			contentField = "Content AddQuestion",
+			layoutName = "questions-page",
+			siteURLKey = "guest",
+			titleField = "Title AddQuestion",
+			topicName = "questions-test-category");
+
+		AssertAlertNotPresent();
+	}
+
 	@description = "Validate if the user can add a comment to an answer, it also covers that the published dates for responses can be shown."
 	@priority = "4"
 	@refactordone

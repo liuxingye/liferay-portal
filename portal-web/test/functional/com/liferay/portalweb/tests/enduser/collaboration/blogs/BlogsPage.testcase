@@ -237,6 +237,24 @@ definition {
 			entryCommentEdit = "2nd Blog Comment Edit");
 	}
 
+	@description = "This test checks that the javascript in the user name will not be executed after adding a blog entry."
+	@priority = "3"
+	test CannotExecuteXSSAfterAddingEntry {
+		Navigator.openURL();
+
+		UserBar.gotoDropdownItem(dropdownItem = "Account Settings");
+
+		User.editUserInformation(userLastNameEdit = '''Test<script>alert('hello!')</script>''');
+
+		Navigator.gotoPage(pageName = "Blogs Page");
+
+		Blogs.addEntry(
+			entryContent = "Blogs Entry Content",
+			entryTitle = "Blogs Entry Title");
+
+		AssertAlertNotPresent();
+	}
+
 	@description = "This checks that Blogs added and scoped to a page will not be seen in other pages."
 	@priority = "4"
 	@refactordone

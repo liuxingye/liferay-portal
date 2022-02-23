@@ -38,6 +38,40 @@ definition {
 		}
 	}
 
+	@description = "This test checks that the javascript in the user name will not be executed when inviting him."
+	@priority = "3"
+	test CannotExecuteXSSWhenInvitingUser {
+		JSONLayout.addPublicLayout(
+			groupName = "Guest",
+			layoutName = "Test Page");
+
+		JSONLayout.addWidgetToPublicLayout(
+			column = "2",
+			groupName = "Guest",
+			layoutName = "Test Page",
+			widgetName = "Invite Members");
+
+		JSONUser.addUser(
+			userEmailAddress = "userea@liferay.com",
+			userFirstName = "userfn",
+			userLastName = "userln",
+			userScreenName = "usersn");
+
+		User.openUsersAdmin();
+
+		UserNavigator.gotoUser(userScreenName = "usersn");
+
+		User.editUserInformation(userLastNameEdit = '''userln<script>alert('hello!')</script>''');
+
+		Navigator.gotoPage(pageName = "Test Page");
+
+		AssertClick(
+			locator1 = "Button#INVITE_MEMBERS",
+			value1 = "Invite Members");
+
+		AssertAlertNotPresent();
+	}
+
 	@description = "This test is skipping portal instance setup due to LPS-75168"
 	@priority = "4"
 	@refactordone

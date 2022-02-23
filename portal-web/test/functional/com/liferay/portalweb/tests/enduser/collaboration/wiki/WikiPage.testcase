@@ -631,6 +631,28 @@ definition {
 			wikiPageTitle = "Wiki Page Title2");
 	}
 
+	@description = "This test checks that the javascript in the user name will not be executed after adding a new wiki page."
+	@priority = "3"
+	test CannotExecuteXSSAfterAddingPage {
+		Navigator.openURL();
+
+		UserBar.gotoDropdownItem(dropdownItem = "Account Settings");
+
+		User.editUserInformation(userLastNameEdit = '''Test<script>alert('hello!')</script>''');
+
+		WikiNavigator.gotoWidgetSpecificTabByURL(
+			layoutURLKey = "wiki-test-page",
+			siteURLKey = "guest",
+			tabURLKey = "all_pages",
+			wikiNodeName = "Main");
+
+		WikiPage.addPG(
+			wikiPageContent = "Wiki Page Content",
+			wikiPageTitle = "Wiki Page Title");
+
+		AssertAlertNotPresent();
+	}
+
 	@description = "This ensures that a wiki page can not be published with invalid character in title."
 	@priority = "4"
 	@refactordone
