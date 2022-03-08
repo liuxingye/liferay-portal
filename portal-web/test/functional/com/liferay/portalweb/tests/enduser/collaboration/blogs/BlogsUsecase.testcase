@@ -110,4 +110,14 @@ definition {
 			userFullName = "Test Test");
 	}
 
+	@description = "This is a test for LPS-94990. It checks that a blog entry can be viewed when using a display page template."
+	@ignore = "Test Stub"
+	@priority = "5"
+	test CanViewEntryUsingDisplayPageTemplate {
+		property portal.acceptance = "false";
+
+		// TODO LPS-94990 CanViewEntryUsingDisplayPageTemplate pending implementation
+
+	}
+
 }
