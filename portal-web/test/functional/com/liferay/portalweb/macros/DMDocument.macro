@@ -1813,6 +1813,24 @@ definition {
 		IFrame.closeFrame();
 	}
 
+	macro enableDirectoryIndexing {
+		ProductMenu.gotoPortlet(
+			category = "Configuration",
+			portlet = "Site Settings");
+
+		Click(
+			key_itemName = "Documents and Media",
+			locator1 = "ListGroupItem#ITEM_TEXT");
+
+		Click(
+			key_scopeItem = "Documents and Media",
+			locator1 = "DocumentsAndMedia#SIDEBAR_SITE_SCOPE_ITEM");
+
+		FormFields.enableSwitch(fieldName = "Enable Directory Indexing");
+
+		Button.clickSave();
+	}
+
 	macro expandInfo {
 		WaitForPageLoad();
 
