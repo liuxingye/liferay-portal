@@ -1360,12 +1360,29 @@ definition {
 	}
 
 	@description = "This is a test for LPS-82205. It checks that the XSS can not be executed after accessing HTML file."
-	@ignore = "Test Stub"
 	@priority = "4"
-	test CannotExecuteXSSWhenAccessingHTMLFIle {
+	test CannotExecuteXSSWhenAccessingHTMLFile {
+		DMDocument.enableDirectoryIndexing();
 
-		// TODO LPS-149971 CannotExecuteXSSWhenAccessingHTMLFIle pending implementation
+		JSONDocument.addFileWithUploadedFile(
+			dmDocumentDescription = "The file is a basic HTML file with a simple JavaScript",
+			dmDocumentTitle = "test",
+			groupName = "Guest",
+			mimeType = "code/html",
+			sourceFileName = "test.html");
 
+		var portalURL = PropsUtil.get("portal.url");
+
+		Navigator.openSpecificURL(url = "${portalURL}/documents/guest/");
+
+		AssertClick(
+			key_text = "test",
+			locator1 = "Link#ANY",
+			value1 = "test");
+
+		AssertAlertNotPresent();
+
+		DMDocument.assertFileNameFromTempFolder(fileName = "test");
 	}
 
 	@priority = "4"
