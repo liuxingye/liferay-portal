@@ -2619,6 +2619,40 @@ definition {
 		SystemSettings.saveConfiguration();
 	}
 
+	macro viewActionIcon {
+		LexiconEntry.openEntryMenu(rowEntry = "${dmDocumentTitle}");
+
+		if (isSet(editAction)) {
+			AssertVisible(
+				key_item = "Edit",
+				key_text = "pencil",
+				locator1 = "Icon#ANY_DROPDOWN_MENU_ITEM_SPECIFIC");
+		}
+
+		if (isSet(permissionsAction)) {
+			AssertVisible(
+				key_item = "Permissions",
+				key_text = "password-policies",
+				locator1 = "Icon#ANY_DROPDOWN_MENU_ITEM_SPECIFIC");
+		}
+
+		if (isSet(checkinAction)) {
+			MenuItem.click(menuItem = "Checkout");
+
+			LexiconEntry.openEntryMenu(rowEntry = "${dmDocumentTitle}");
+
+			AssertVisible(
+				key_text = "unlock",
+				locator1 = "Icon#ANY");
+		}
+
+		for (var actionIconList : list "${actionIconList}") {
+			AssertVisible(
+				key_text = "${actionIconList}",
+				locator1 = "Icon#ANY");
+		}
+	}
+
 	macro viewAllPG {
 		DMDocument.viewPG(
 			categoryName = "${categoryName}",
