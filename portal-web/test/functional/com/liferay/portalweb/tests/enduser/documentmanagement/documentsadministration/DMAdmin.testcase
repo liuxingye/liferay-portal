@@ -138,6 +138,28 @@ definition {
 			value1 = "1 of 2 Selected");
 	}
 
+	@description = "This checks that the actions icons can be viewed via dropdown menu."
+	@priority = "5"
+	test CanViewActionsIcons {
+		property custom.properties = "feature.flag.LPS-152694=true";
+
+		JSONDocument.addFileWithUploadedFile(
+			dmDocumentDescription = "DM Image Description",
+			dmDocumentTitle = "Document_2.jpg",
+			groupName = "Guest",
+			mimeType = "image/jpg",
+			sourceFileName = "Document_2.jpg");
+
+		DMNavigator.openDocumentsAndMediaAdmin(siteURLKey = "guest");
+
+		DMDocument.viewActionIcon(
+			actionIconList = "trash,move-folder,lock,share,download",
+			checkinAction = "true",
+			dmDocumentTitle = "Document_2.jpg",
+			editAction = "true",
+			permissionsAction = "true");
+	}
+
 	@description = "This test covers LPS-141587. It validates that if the 'Delete Application Data Before Importing' option is selected the Doc Lib will not increase in size after the LAR import."
 	@priority = "4"
 	test DLSizeDoesNotIncreaseIfAppDataIsDeletedBeforeImport {
