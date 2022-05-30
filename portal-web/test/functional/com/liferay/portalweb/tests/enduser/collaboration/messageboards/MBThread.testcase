@@ -729,9 +729,7 @@ definition {
 
 		MessageboardsThread.editCP(
 			skipNavigation = "true",
-			threadBodyEdit = "MB Thread Message Body Edit",
-			threadBodyImageNameEdit = "DM Document Title",
-			threadSubject = "MB Thread Message Subject");
+			threadBodyImageNameEdit = "DM Document Title");
 
 		PortletEntry.publish();
 
@@ -743,7 +741,7 @@ definition {
 
 		MessageboardsThread.viewCP(
 			replyCount = "0",
-			threadBody = "MB Thread Message Body Edit",
+			threadBody = "MB Thread Message Body",
 			threadBodyImageName = "dm-document-title",
 			threadSubject = "MB Thread Message Subject",
 			userName = "Test Test");

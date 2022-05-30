@@ -529,16 +529,16 @@ definition {
 				value1 = "${threadBodyEdit}");
 
 			SelectFrameTop();
+		}
 
-			if (isSet(threadBodyImageNameEdit)) {
-				var key_imageFileName = "${threadBodyImageNameEdit}";
+		if (isSet(threadBodyImageNameEdit)) {
+			ItemSelector.gotoItemSelectorViaCKEditor();
 
-				ItemSelector.gotoItemSelectorViaCKEditor();
+			SelectFrame(locator1 = "ItemSelector#ITEM_SELECTOR_IFRAME");
 
-				SelectFrame(locator1 = "ItemSelector#ITEM_SELECTOR_IFRAME");
-
-				Click(locator1 = "ItemSelector#SELECT_FILE_IMAGE_CARD");
-			}
+			Click(
+				key_imageFileName = "${threadBodyImageNameEdit}",
+				locator1 = "ItemSelector#SELECT_FILE_IMAGE_CARD");
 		}
 	}
 
