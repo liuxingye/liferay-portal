@@ -3446,7 +3446,7 @@ definition {
 
 	}
 
-	@description = "This test covers LPS-154397."
+	@description = "This test covers LPS-154397. It ensures that an image with a custom friendlyURL can be published from an asset library and rendered correctly in MG on a connected site."
 	@priority = "4"
 	test CanViewImageInMGWidgetAfterPublish {
 		property osgi.module.configuration.file.names = "com.liferay.document.library.configuration.FFFriendlyURLEntryFileEntryConfiguration.config";
