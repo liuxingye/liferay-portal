@@ -288,6 +288,7 @@ definition {
 	@priority = "4"
 	@refactorneeded
 	test CheckinDocument {
+		property portal.acceptance = "beck";
 		property test.name.skip.portal.instance = "SharepointREST#CheckinDocument";
 
 		DMRepository.cleanRepository(dmDocumentTitle = "Document_3.txt");
@@ -567,6 +568,7 @@ definition {
 	@priority = "4"
 	@refactorneeded
 	test ViewDocumentAsGuest {
+		property portal.acceptance = "beck";
 		property test.name.skip.portal.instance = "SharepointREST#ViewDocumentAsGuest";
 
 		ProductMenu.gotoPortlet(
