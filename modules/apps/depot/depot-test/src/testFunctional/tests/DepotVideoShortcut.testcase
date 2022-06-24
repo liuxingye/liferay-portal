@@ -547,6 +547,7 @@ definition {
 	@priority = "3"
 	@refactorneeded
 	test ViewInRelatedAssets {
+		property portal.acceptance = "beck";
 		property test.name.skip.portal.instance = "DepotVideoShortcut#ViewInRelatedAssets";
 
 		JSONLayout.addWidgetToPublicLayout(
