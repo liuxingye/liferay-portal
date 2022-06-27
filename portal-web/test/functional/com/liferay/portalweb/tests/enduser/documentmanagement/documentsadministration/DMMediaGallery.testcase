@@ -446,6 +446,7 @@ definition {
 	@priority = "4"
 	@refactorneeded
 	test ViewVideoViaMediaGallery {
+		property portal.acceptance = "beck";
 		property test.assert.warning.exceptions = "false";
 		property test.name.skip.portal.instance = "PGMediagallery#ViewVideoViaMediaGallery";
 
