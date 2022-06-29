@@ -3961,6 +3961,41 @@ definition {
 		}
 	}
 
+	macro viewBlogsEntriesWithImagesAfterPublishing {
+		Navigator.gotoStagedSitePage(
+			pageName = "Staging Test Page",
+			siteName = "Site Name");
+
+		Staging.gotoPublishToLive();
+
+		Staging.publishToLive();
+
+		Navigator.gotoSitePage(
+			pageName = "Staging Test Page",
+			siteName = "Site Name");
+
+		AssertVisible(
+			key_imageFileName = "Document_1.jpg",
+			locator1 = "BlogsEntry#CONTENT_SMALL_IMAGE");
+
+		BlogsNavigator.openToBlogEntry(
+			entryTitle = "Blogs Entry Title With Inline Image",
+			layoutName = "Staging Test Page",
+			siteURLKey = "site-name");
+
+		BlogsEntry.viewInlineImage(uploadFileName = "Document_4");
+
+		BlogsNavigator.openToBlogEntry(
+			entryTitle = "Blogs Entry Title With Video",
+			layoutName = "Staging Test Page",
+			siteURLKey = "site-name");
+
+		BlogsEntry.viewEntryPG(
+			embedVideo = "true",
+			entryContent = "video",
+			entryTitle = "Blogs Entry Title With Video");
+	}
+
 	macro viewCalendar {
 		Navigator.gotoPage(pageName = "Calendar");
 
