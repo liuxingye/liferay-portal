@@ -215,7 +215,8 @@ definition {
 	@refactordone
 	test CanAddAutoTagAfterEnablingOpenNLP {
 		property environment.acceptance = "true";
-		property portal.acceptance = "true";
+		property app.server.types = "weblogic";
+		property portal.smoke = "beck";
 		property test.name.skip.portal.instance = "AutoTaggingFramework#CanAddAutoTagAfterEnablingOpenNLP";
 		property websphere.ssl.truststore.enabled = "true";
 
