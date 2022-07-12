@@ -35,6 +35,7 @@ definition {
 	@refactorneeded
 	test ViewKBArticleSuggestionsWorkflowNotificationEmail {
 		property custom.properties = "jsonws.web.service.paths.excludes=";
+		property portal.acceptance = "true";
 		property test.smtp.server.enabled = "true";
 
 		var siteName = TestCase.getSiteName(siteName = "${siteName}");

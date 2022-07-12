@@ -1,6 +1,7 @@
 @component-name = "portal-knowledge-base"
 definition {
 
+	property portal.acceptance = "true";
 	property portal.release = "true";
 	property portal.upstream = "true";
 	property testray.main.component.name = "Knowledge Base";
@@ -194,8 +195,6 @@ definition {
 	@priority = "5"
 	@refactordone
 	test CanAddFolder {
-		property portal.acceptance = "true";
-
 		KBFolder.addCP(
 			kbFolderDescription = "KB Folder 1 Description",
 			kbFolderName = "KB Folder 1");

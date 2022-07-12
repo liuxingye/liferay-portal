@@ -39,6 +39,8 @@ definition {
 	@priority = "3"
 	@refactorneeded
 	test DeleteKBArticleViaKBArticle {
+		property portal.acceptance = "true";
+
 		KBAdmin.openKBAdmin(siteURLKey = "guest");
 
 		KBArticle.addCP(

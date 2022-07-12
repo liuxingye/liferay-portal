@@ -34,6 +34,8 @@ definition {
 	@priority = "3"
 	@refactorneeded
 	test ViewUnchangedKBArticleTitleViaLocalizedPage {
+		property portal.acceptance = "true";
+
 		var portalURL = PropsUtil.get("portal.url");
 		var siteName = TestCase.getSiteName(siteName = "${siteName}");
 

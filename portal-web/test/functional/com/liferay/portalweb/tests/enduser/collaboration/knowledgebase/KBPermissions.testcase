@@ -35,6 +35,7 @@ definition {
 	@refactorneeded
 	test ViewSuggestionsWithPermissions {
 		property custom.properties = "jsonws.web.service.paths.excludes=";
+		property portal.acceptance = "true";
 
 		JSONLayout.addPublicLayout(
 			groupName = "Guest",
