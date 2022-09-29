@@ -33,6 +33,7 @@ definition {
 	}
 
 	@description = "This test ensures that the mapped author name field with KB article can be displayed on the content page."
+	@ignore = "true"
 	@priority = "5"
 	test CanMapAuthorNameToHeadingFragment {
 		JSONKnowledgeBase.addkBArticle(
