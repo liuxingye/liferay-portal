@@ -177,6 +177,7 @@ definition {
 	@description = "This test covers LPS-163951. Verify the image thumbnail in asset publisher can be published when using image URL."
 	@priority = "4"
 	test CanPublishWCWithImagesViaAP {
+		property portal.acceptance = "beck";
 		property test.name.skip.portal.instance = "RemoteStaging#CanPublishWCWithImagesViaAP";
 
 		task ("Given: Dm image and AP widget on staged site") {
