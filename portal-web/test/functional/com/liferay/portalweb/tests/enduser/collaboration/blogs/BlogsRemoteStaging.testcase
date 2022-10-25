@@ -168,6 +168,7 @@ definition {
 		property custom.properties = "tunneling.servlet.shared.secret=1234567890123456${line.separator}auth.verifier.TunnelAuthVerifier.hosts.allowed=${line.separator}company.default.time.zone=America/Los_Angeles";
 		property databases.size = "1";
 		property minimum.slave.ram = "24";
+		property portal.acceptance = "beck";
 		property test.name.skip.portal.instance = "BlogsRemoteStaging#CanPublishScheduledEntry";
 
 		Staging.remoteStagingSetUpViaJson(
