@@ -21,6 +21,7 @@ definition {
 	test CanImportFileWithPageTemplateAndFragmentAfterUpgradeFrom621021 {
 		property data.archive.type = "data-archive-portal";
 		property database.types = "mysql";
+		property portal.acceptance = "beck";
 		property portal.version = "6.2.10.21";
 
 		task ("Given: Add a new site") {
