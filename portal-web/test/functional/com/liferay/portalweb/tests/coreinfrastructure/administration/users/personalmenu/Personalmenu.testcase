@@ -32,6 +32,7 @@ definition {
 	@priority = "3"
 	test CanViewNotFoundWhenGuestAccessManageURL {
 		property custom.properties = "virtual.hosts.default.site.name=Guest";
+		property portal.acceptance = "beck";
 		property test.name.skip.portal.instance = "Personalmenu#CanViewNotFoundWhenGuestAccessManageURL";
 
 		var portalURL = PropsUtil.get("portal.url");
