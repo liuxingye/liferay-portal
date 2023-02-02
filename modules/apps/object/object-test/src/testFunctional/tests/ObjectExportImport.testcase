@@ -232,6 +232,20 @@ definition {
 		}
 	}
 
+	@description = "LPS-161893 - Verify that it's possible to import an object entry with aggregation field"
+	@priority = "4"
+	test CanImportObjectWithhAggregationField {
+		task ("When import object with aggregation field") {
+			ObjectExportImport.importObject(
+				objectFileName = "ImportedObjectWithAggregationField",
+				objectName = "ImportedObjectWithAggregationField161893");
+		}
+
+		task ("Then assert the imported file is present") {
+			CreateObject.assertCustomObject(labelName = "Imported Object With Aggregation Field");
+		}
+	}
+
 	@description = "LPS-142175 - Verify it is possible to import the same object more then one time"
 	@priority = "4"
 	test CanImportSameObjectMoreThanOnce {
