@@ -338,12 +338,30 @@ definition {
 	}
 
 	@description = "This test checks that the management toolbar displays the checkbox, Filter & Order button, Order By button, search bar, and the info icon"
-	@ignore = "Test Stub"
 	@priority = 5
 	test CorrectActionsAppearInToolbarAfterSelectingFolder {
+		JSONKnowledgeBase.addkBFolder(
+			groupName = "Guest",
+			kbFolderDescription = "KB Folder Description",
+			kbFolderName = "KB Folder");
 
-		// TODO LPS-166644
+		KBAdmin.openKBAdmin(siteURLKey = "guest");
 
+		KBFolder.gotoCP(kbFolderName = "KB Folder");
+
+		KBArticle.viewDefaultCP(disabledActionToolbar = "true");
+
+		JSONKnowledgeBase.addkBArticle(
+			folderName = "KB Folder",
+			groupName = "Guest",
+			kbArticleContent = "Knowledge Base Article Content",
+			kbArticleTitle = "Knowledge Base Article Title");
+
+		KBAdmin.openKBAdmin(siteURLKey = "guest");
+
+		KBFolder.gotoCP(kbFolderName = "KB Folder");
+
+		KBArticle.viewActiveActionsManagementToolbar(title = "KB Folder");
 	}
 
 	@priority = 3
