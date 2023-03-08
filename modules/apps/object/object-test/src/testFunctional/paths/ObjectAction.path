@@ -38,6 +38,11 @@
 		<td></td>
 	</tr>
 	<tr>
+		<td>INPUT_EXPRESSION_FORMULA</td>
+		<td>//input[contains(@placeholder,'to use the autocomplete feature')]</td>
+		<td></td>
+	</tr>
+	<tr>
 		<td>INPUT_NEW_VALUE</td>
 		<td>//input[(@placeholder="Input a value or create an expression.")]</td>
 		<td></td>
