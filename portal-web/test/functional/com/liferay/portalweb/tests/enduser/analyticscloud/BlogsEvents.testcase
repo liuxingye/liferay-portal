@@ -42,7 +42,6 @@ definition {
 	}
 
 	@description = "Feature ID: Legacy | Automation ID: LRAC-8668 | Test Summary: Check blogClicked is triggered when a blog is clicked within a widget"
-	@ignore = "true"
 	@priority = 3
 	test CheckBlogClickedTriggeredWhenBlogClicked {
 
