@@ -165,7 +165,7 @@
 </tr>
 <tr>
 	<td>OCCURENCE_SELECT</td>
-	<td>xpath=(//div[(@class='criterion')])[${key_indexField}]//select[@class='form-control operator-input']</td>
+	<td>xpath=((//div[(@class='criterion')])[${key_indexField}]//button[contains(@class,'operator-input')])[2]</td>
 	<td></td>
 </tr>
 <tr>
@@ -392,8 +392,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>ACTIVITIES_CRITERION_DROPDOWN</td>
-	<td>xpath=(//button[contains(@class,'dropdown-item') and text()='${operator}'])</td>
+	<td>CRITERION_DROPDOWN_VALUE</td>
+	<td>//button[contains(@class,'dropdown-item') and text()='${operator}']</td>
 	<td></td>
 </tr>
 <tr>

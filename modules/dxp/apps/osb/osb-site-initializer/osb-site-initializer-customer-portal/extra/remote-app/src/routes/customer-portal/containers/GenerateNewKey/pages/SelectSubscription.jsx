@@ -22,9 +22,11 @@ import {getLicenseKeyEndDatesByLicenseType} from '../utils/licenseKeyEndDateUtil
 
 const SelectSubscription = ({
 	accountKey,
+	hasKeyComplimentary,
 	infoSelectedKey,
 	productGroupName,
 	sessionId,
+	setHasKeyComplimentary,
 	setInfoSelectedKey,
 	setStep,
 	urlPreviousPage,
@@ -66,8 +68,6 @@ const SelectSubscription = ({
 	const [selectedKeyType, setSelectedKeyType] = useState(
 		infoSelectedKey?.licenseEntryType
 	);
-
-	const [hasKeyComplimentary, setHasKeyComplimentary] = useState(false);
 
 	const doesNotAllowPermanentLicense = !generateFormValues?.allowPermanentLicenses;
 
@@ -531,7 +531,7 @@ const SelectSubscription = ({
 							}}
 							selected={hasKeyComplimentary}
 							subtitle={i18n.translate(
-								'choose-this-option-if-you-want-an-activation-key-for-30-days'
+								'choose-this-option-if-you-want-an-activation-key-for-60-days'
 							)}
 							value={mockedValuesForComplimentaryKeys}
 						/>

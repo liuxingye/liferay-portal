@@ -45,6 +45,18 @@
 		"to": "setA2"
 	},
 	{
+		"from": "DLUtil.getImagePreviewURL",
+		"issueKey": "LPS-187531",
+		"newImports": [
+			"com.liferay.document.library.util.DLURLHelperUtil"
+		],
+		"to": "DLURLHelperUtil.getImagePreviewURL",
+		"validExtensions": [
+			"java",
+			"jsp"
+		]
+	},
+	{
 		"classNames": [
 			"CountryService"
 		],
@@ -127,6 +139,11 @@
 		"to": "fetchCPDefinitionByCProductExternalReferenceCode(param#1#, param#0#)"
 	},
 	{
+		"from": "Indexer",
+		"issueKey": "LPS-191840",
+		"to": "Indexer<?>"
+	},
+	{
 		"classNames": [
 			"Indexer"
 		],
@@ -146,6 +163,16 @@
 		"from": "addCategory(long, long, long, Map<Locale, String>, Map<Locale, String>, long, String[], ServiceContext)",
 		"issueKey": "LPS-192320",
 		"to": "addCategory(null, param#0#, param#1#, param#2#, param#3#, param#4#, param#5#, param#6#, param#7#)"
+	},
+	{
+		"from": "DLUtil.getGroupIds(ThemeDisplay)",
+		"issueKey": "LPS-192396",
+		"newImports": "com.liferay.portal.kernel.util.PortalUtil",
+		"to": "PortalUtil.getCurrentAndAncestorSiteGroupIds(param#0#.getScopeGroupId())",
+		"validExtensions": [
+			"java",
+			"jsp"
+		]
 	},
 	{
 		"classNames": [
@@ -197,6 +224,14 @@
 		"from": "addFolder(long, long, long, boolean, long, String, String, boolean, ServiceContext)",
 		"issueKey": "LPS-194001",
 		"to": "addFolder(null, param#0#, param#1#, param#2#, param#3#, param#4#, param#5#, param#6#, param#7#, param#8#)"
+	},
+	{
+		"from": "compat/mixins",
+		"issueKey": "LPS-194519",
+		"to": "clay/cadmin-variables",
+		"validExtensions": [
+			"scss"
+		]
 	},
 	{
 		"classNames": [

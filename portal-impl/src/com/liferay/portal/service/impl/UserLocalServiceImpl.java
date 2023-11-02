@@ -51,6 +51,7 @@ import com.liferay.portal.kernel.exception.UserPasswordException;
 import com.liferay.portal.kernel.exception.UserReminderQueryException;
 import com.liferay.portal.kernel.exception.UserScreenNameException;
 import com.liferay.portal.kernel.exception.UserSmsException;
+import com.liferay.portal.kernel.feature.flag.FeatureFlagManagerUtil;
 import com.liferay.portal.kernel.language.LanguageUtil;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
@@ -6231,7 +6232,9 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 		return true;
 	}
 
-	protected void notifyUser(User user, ServiceContext serviceContext) {
+	protected void notifyUser(User user, ServiceContext serviceContext)
+		throws PortalException {
+
 		if (!PrefsPropsUtil.getBoolean(
 				user.getCompanyId(),
 				PropsKeys.ADMIN_EMAIL_USER_ADDED_ENABLED)) {
@@ -6264,10 +6267,6 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 				PropsKeys.ADMIN_EMAIL_USER_ADDED_NO_PASSWORD_BODY);
 		}
 		else {
-			Ticket ticket = _ticketLocalService.addDistinctTicket(
-				user.getCompanyId(), User.class.getName(), user.getUserId(),
-				TicketConstants.TYPE_PASSWORD, null, null, serviceContext);
-
 			String updatePasswordURL = "/portal/update_password?";
 
 			long plid = serviceContext.getPlid();
@@ -6285,9 +6284,33 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 				}
 			}
 
+			Date expirationDate = null;
+
+			if (FeatureFlagManagerUtil.isEnabled("LPS-193884")) {
+				PasswordPolicy passwordPolicy = user.getPasswordPolicy();
+
+				if ((passwordPolicy != null) &&
+					(passwordPolicy.getResetTicketMaxAge() > 0)) {
+
+					expirationDate = new Date(
+						System.currentTimeMillis() +
+							(passwordPolicy.getResetTicketMaxAge() * 1000));
+				}
+			}
+
+			Ticket ticket = _ticketLocalService.addDistinctTicket(
+				user.getCompanyId(), User.class.getName(), user.getUserId(),
+				TicketConstants.TYPE_PASSWORD, null, expirationDate,
+				serviceContext);
+
 			passwordResetURL = StringBundler.concat(
 				serviceContext.getPortalURL(), serviceContext.getPathMain(),
-				updatePasswordURL, "ticketKey=", ticket.getKey());
+				updatePasswordURL, "ticketId=", ticket.getTicketId(),
+				"&ticketKey=", ticket.getKey());
+
+			ticket.setKey(PasswordEncryptorUtil.encrypt(ticket.getKey()));
+
+			_ticketLocalService.updateTicket(ticket);
 
 			localizedBodyMap = LocalizationUtil.getLocalizationMap(
 				companyPortletPreferences,

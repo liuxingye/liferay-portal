@@ -2085,6 +2085,24 @@ public class JenkinsResultsParserUtil {
 		return globs.toArray(new String[0]);
 	}
 
+	public static String getHeadersString(URLConnection urlConnection) {
+		Map<String, List<String>> headersMap = urlConnection.getHeaderFields();
+
+		StringBuilder sb = new StringBuilder();
+
+		for (Map.Entry<String, List<String>> entry : headersMap.entrySet()) {
+			sb.append(entry.getKey());
+			sb.append(": ");
+
+			sb.append(join(", ", entry.getValue()));
+			sb.append("\n");
+		}
+
+		sb.append("\n");
+
+		return sb.toString();
+	}
+
 	public static String getHostIPAddress() {
 		try {
 			InetAddress inetAddress = InetAddress.getLocalHost();
@@ -4400,16 +4418,35 @@ public class JenkinsResultsParserUtil {
 			}
 		}
 
+		boolean gitHubAPICall = false;
 		int retryCount = 0;
 
 		while (true) {
+			URLConnection urlConnection = null;
+
 			try {
 				if (debug) {
 					System.out.println("Downloading " + url);
 				}
 
+				Matcher matcher = _gitHubAPIURLPattern.matcher(url);
+
+				if (matcher.matches()) {
+					gitHubAPICall = true;
+
+					if (_updatingHttpRequestMethods.contains(
+							httpRequestMethod)) {
+
+						Properties buildProperties = getBuildProperties();
+
+						url =
+							buildProperties.getProperty("github.api.proxy") +
+								matcher.group(1);
+					}
+				}
+
 				if ((httpAuthorizationHeader == null) &&
-					(url.startsWith("https://api.github.com") ||
+					(gitHubAPICall ||
 					 url.startsWith(
 						 "https://raw.githubusercontent.com/liferay/"))) {
 
@@ -4483,21 +4520,9 @@ public class JenkinsResultsParserUtil {
 							buildProperties, "testray.admin.user.name"));
 				}
 
-				Matcher matcher = _gitHubAPIURLPattern.matcher(url);
-
-				if (matcher.matches() &&
-					_updatingHttpRequestMethods.contains(httpRequestMethod)) {
-
-					Properties buildProperties = getBuildProperties();
-
-					url =
-						buildProperties.getProperty("github.api.proxy") +
-							matcher.group(1);
-				}
-
 				URL urlObject = new URL(url);
 
-				URLConnection urlConnection = urlObject.openConnection();
+				urlConnection = urlObject.openConnection();
 
 				if (urlConnection instanceof HttpURLConnection) {
 					HttpURLConnection httpURLConnection =
@@ -4514,12 +4539,7 @@ public class JenkinsResultsParserUtil {
 							httpRequestMethod.name());
 					}
 
-					Properties buildProperties = getBuildProperties();
-
-					if ((url.startsWith("https://api.github.com") ||
-						 url.startsWith(
-							 buildProperties.getProperty(
-								 "github.api.proxy"))) &&
+					if (gitHubAPICall &&
 						(httpURLConnection instanceof HttpsURLConnection)) {
 
 						SSLContext sslContext = null;
@@ -4591,12 +4611,7 @@ public class JenkinsResultsParserUtil {
 
 				urlConnection.connect();
 
-				Properties buildProperties = getBuildProperties();
-
-				if (url.startsWith("https://api.github.com") ||
-					url.startsWith(
-						buildProperties.getProperty("github.api.proxy"))) {
-
+				if (gitHubAPICall) {
 					try {
 						int limit = Integer.parseInt(
 							urlConnection.getHeaderField("X-RateLimit-Limit"));
@@ -4636,16 +4651,60 @@ public class JenkinsResultsParserUtil {
 						retryPeriod, timeout, httpAuthorizationHeader);
 				}
 
-				retryCount++;
+				String exceptionMessage = ioException.getMessage();
+
+				Integer retryPeriodOverride = null;
+
+				if (exceptionMessage.matches(
+						".*HTTP response code\\: 403 .*") &&
+					(urlConnection != null)) {
+
+					try {
+						retryPeriodOverride = Integer.parseInt(
+							urlConnection.getHeaderField("retry-after"));
+					}
+					catch (NumberFormatException numberFormatException) {
+						retryPeriodOverride = null;
+					}
+
+					if ((retryPeriodOverride == null) ||
+						(retryPeriodOverride == 0)) {
+
+						retryPeriodOverride = retryPeriod;
+
+						for (int i = 0; i < retryCount; i++) {
+							retryPeriodOverride *= retryPeriodOverride;
+						}
+					}
+
+					if (((maxRetries >= 0) && (retryCount >= maxRetries)) ||
+						(retryPeriodOverride > _SECONDS_RETRY_PERIOD_MAX)) {
+
+						throw new GitHubSecondaryRateLimitRuntimeException(
+							url, retryPeriodOverride, ioException);
+					}
+				}
+
+				long retryPeriodMillis = 1000 * retryPeriod;
+
+				if ((retryPeriodOverride != null) &&
+					(retryPeriodOverride > 0)) {
+
+					retryPeriodMillis = 1000 * retryPeriodOverride;
+				}
 
 				if ((maxRetries >= 0) && (retryCount >= maxRetries)) {
 					throw ioException;
 				}
 
 				System.out.println(
-					"Retrying " + url + " in " + retryPeriod + " seconds");
+					combine(
+						"Retrying ", url, " in ",
+						toDurationString(retryPeriodMillis)));
 
-				sleep(1000 * retryPeriod);
+				retryCount++;
+
+				sleep(retryPeriodMillis);
 			}
 		}
 	}
@@ -6331,6 +6390,8 @@ public class JenkinsResultsParserUtil {
 	private static final int _RETRIES_SIZE_MAX_DEFAULT = 3;
 
 	private static final int _SECONDS_RETRY_PERIOD_DEFAULT = 5;
+
+	private static final int _SECONDS_RETRY_PERIOD_MAX = 60 * 30;
 
 	private static final String _URL_LOAD_BALANCER =
 		"http://cloud-10-0-0-31.lax.liferay.com/osb-jenkins-web/load_balancer";

@@ -30,15 +30,13 @@ public class UpgradeCatchAllCheck {
 		DestinationNames.STOCK_QUANTITY;
 		DestinationNames.SUBSCRIPTION_STATUS;
 
+		DLUtil.getImagePreviewURL(null, null, null);
+
 		FDSTableSchemaBuilder fDSTableSchemaBuilder = _fDSTableSchemaBuilderFactory.create();
 
 		fDSTableSchemaBuilder.addFDSTableSchemaField("test123", "test123");
 
-		HtmlUtil.extractText(testEntry.getContent());
-
-		if (true) {
-			HtmlUtil.extractText(testEntry.getContent());
-		}
+		HtmlUtil.extractText(null);
 	}
 
 	public void method(AssetCategory<?> assetCategory) {
@@ -62,6 +60,13 @@ public class UpgradeCatchAllCheck {
 	public void method(HttpServletRequest httpServletRequest) {
 		_commerceAccountHelper.getCurrentCommerceAccount(httpServletRequest);
 		_commerceAccountHelper.getCurrentCommerceAccount(null);
+	}
+
+	public void method(
+		Indexer indexer, ServiceReference<Indexer> serviceReference) {
+
+		Map<Indexer, Indexer> indexerRequests = new LinkedHashMap<>();
+		List<Indexer> indexers = portlet.getIndexerInstances();
 	}
 
 	public void method(Indexer<?> indexer) {
@@ -99,12 +104,6 @@ public class UpgradeCatchAllCheck {
 		LayoutLocalServiceUtil.addLayout(userId, groupId, privateLayout, parentLayoutId, classNameId, classPK, nameMap, titleMap, descriptionMap, keywordsMap, robotsMap, type, typeSettings, hidden, system, friendlyURLMap, serviceContext);
 		_layoutLocalService.addLayout(userId, groupId, 123, parentLayoutId, classNameId, classPK, nameMap, titleMap, descriptionMap, keywordsMap, robotsMap, type, typeSettings, hidden, system, friendlyURLMap, serviceContext);
 		_layoutLocalService.addLayout(userId, groupId, privateLayout, parentLayoutId, classNameId, classPK, nameMap, titleMap, descriptionMap, keywordsMap, robotsMap, type, typeSettings, hidden, system, friendlyURLMap, serviceContext);
-	}
-
-	public void method(
-		ResourceRequest resourceRequest, ResourceResponse resourceResponse) {
-
-		CaptchaUtil.serveImage(resourceRequest, resourceResponse);
 	}
 
 	public void method(
@@ -274,6 +273,12 @@ public class UpgradeCatchAllCheck {
 	}
 
 	public void method(
+		ResourceRequest resourceRequest, ResourceResponse resourceResponse) {
+
+		CaptchaUtil.serveImage(resourceRequest, resourceResponse);
+	}
+
+	public void method(
 		String className, long classPK, long accountGroupId,
 		ServiceContext serviceContext) {
 
@@ -291,6 +296,11 @@ public class UpgradeCatchAllCheck {
 		CommercePriceEntryLocalServiceUtil.addCommercePriceEntry(externalReferenceCode, cProductId, cpInstanceUuid, commercePriceListId, price, promoPrice, serviceContext);
 		_commercePriceEntryLocalService.addCommercePriceEntry("test123", cProductId, cpInstanceUuid, commercePriceListId, price, promoPrice, serviceContext);
 		_commercePriceEntryLocalService.addCommercePriceEntry(externalReferenceCode, cProductId, cpInstanceUuid, commercePriceListId, price, promoPrice, serviceContext);
+	}
+
+	public void method(ThemeDisplay themeDisplay){
+		DLUtil.getGroupIds(null);
+		DLUtil.getGroupIds(themeDisplay);
 	}
 
 	@Reference
